@@ -7,8 +7,21 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 })
 export class HopdongComponent implements OnInit,AfterViewInit  {
   @ViewChild('myDiv') myDiv!: ElementRef;
-  constructor() { }
+  benA: any;
+  diaChiA:any;
+  dienThoaiA:any;
+  mstA:any;
+  daiDienA:any;
 
+  benB: any;
+  diaChiB:any;
+  diaChiThuB:any;
+  dienThoaiB:any;
+  mstB:any;
+  daiDienB:any;
+  taiKhoanNH:any;
+  tenTaiKhoan:any;
+  constructor() { }
   ngOnInit(): void {
   }
   ngAfterViewInit() {

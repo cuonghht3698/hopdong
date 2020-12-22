@@ -16,10 +16,12 @@
         </div>
 
         <div class="info" style="margin-left: 60px;line-height: 1.5;">
-            <span style="line-height: 1.5;"><i>Hôm nay, ngày 25 tháng 06 năm 2020 chúng tôi gồm:</i></span><br>
-            <span style="line-height: 1.5">BÊN A &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: CÔNG TY CỔ PHẦN
-                NGHỆ THUẬT
-                NGUYỄN VIỆT THANH</span><br>
+            <span style="line-height: 1.5;"><i>Hôm nay, ngày 25 tháng 06 năm 2020 chúng tôi gồm:</i></span>
+
+            <br>
+            <span style="line-height: 1.5">BÊN A &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;: </span>
+            <span>{{ benA }}</span>
+            <input *ngIf="true" [(ngModel)]="benA" type="text" style="width: 300px;"><br>
             <span style="line-height: 1.5">Địa chỉ &#160;&#160;&#160;&#160;&#160;&#160;&#160;: Tầng 3, Tòa nhà Green
                 Pearl, số
                 378 đường Minh Khai, phường Vĩnh Tuy, quận Hai Bà Trưng, thành phố Hà nội, Việt Nam</span><br>

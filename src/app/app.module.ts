@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HopdongComponent } from './hopdong/hopdong.component';
 import { NgxPrintModule } from 'ngx-print';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NgxPrintModule } from 'ngx-print';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPrintModule
+    NgxPrintModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
