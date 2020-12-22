@@ -3,14 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HopdongComponent } from './hopdong/hopdong.component';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HopdongComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

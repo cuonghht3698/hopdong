@@ -1,0 +1,48 @@
+body {
+    background-color: #FAFAFA;
+    /* box-sizing: border-box;
+    -moz-box-sizing: border-box; */
+    font-family: "Times New Roman", Times, serif;
+}
+
+.a4 {
+    /* margin: auto; */
+    text-align: justify;
+    padding-top: 1.25cm;
+    padding-left: 2.06cm;
+    padding-bottom: 0.75cm;
+    padding-right: 1.43cm;
+    width: 21cm;
+    height: 29cm;
+}
+
+.text {
+    font-size: 12pt;
+    padding: 5px;
+    position: absolute;
+    border: none;
+    background: none;
+    border-bottom: 1.8px black dotted;
+    outline: none;
+}
+
+@media print {
+    .a4 {
+        page-break-after: always;
+        page-break-inside: auto;
+    }
+}
+
+@page a4 {
+    size: 29.7cm 21cm;
+    mso-page-orientation: landscape;
+}
+
+table,
+td,
+th {
+    border: 1px solid black;
+    padding: 10px 5px;
+}
+
+table {}

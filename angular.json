@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "toolsp1"
+  "defaultProject": "toolsp1",
+  "cli": {
+    "analytics": "de853a0e-0016-4072-80a4-6bc4296189c6"
+  }
 }
