@@ -3,8 +3,23 @@ body {
     /* box-sizing: border-box;
     -moz-box-sizing: border-box; */
     font-family: "Times New Roman", Times, serif;
+    width: 100%;
 }
+span{
+    /* letter-spacing: 0.5px;
+    word-spacing: 21px;
+    white-space: normal;
+    word-spacing: normal; */
+    
+}
+pre{
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 12pt;
+    letter-spacing: 0.1;
+    word-spacing: 1px;
 
+    
+}
 .a4 {
     /* margin: auto; */
     text-align: justify;
@@ -12,13 +27,14 @@ body {
     padding-left: 2.06cm;
     padding-bottom: 0.75cm;
     padding-right: 1.43cm;
-    width: 21cm;
-    height: 29cm;
+    width: 23cm;
+    height: 29.7cm;
+
 }
 
 .text {
     font-size: 12pt;
-    padding: 5px;
+    /* padding: 5px; */
     position: absolute;
     border: none;
     background: none;

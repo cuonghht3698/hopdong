@@ -1,4 +1,8 @@
+
+import { HopDongPopup } from './popup/hopdop.popup';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-hopdong',
@@ -6,26 +10,58 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
   styleUrls: ['./hopdong.component.css']
 })
 export class HopdongComponent implements OnInit,AfterViewInit  {
+  constructor(private dialog:MatDialog,private fb:FormBuilder) { }
+   data!: FormGroup;
+   dateNow!: Date;
+   dataTable:any[] = [];
   @ViewChild('myDiv') myDiv!: ElementRef;
-  benA: any;
-  diaChiA:any;
-  dienThoaiA:any;
-  mstA:any;
-  daiDienA:any;
 
-  benB: any;
-  diaChiB:any;
-  diaChiThuB:any;
-  dienThoaiB:any;
-  mstB:any;
-  daiDienB:any;
-  taiKhoanNH:any;
-  tenTaiKhoan:any;
-  constructor() { }
+  
+
+  
   ngOnInit(): void {
+
+    this.dateNow = new Date();
+    this.data = this.fb.group({
+      benA:'',
+      diaChiA:'',
+      dienThoaiA:'',
+      mstA:'',
+      daiDienA:'',
+      diaDiem:'',
+      timeThucHien: new Date(),
+      timeLapDat:new Date()
+    })
+      this.OpenPopup();
   }
   ngAfterViewInit() {
-    console.log(this.myDiv.nativeElement.innerHTML);
+    // console.log(this.myDiv.nativeElement.innerHTML);
+}
+
+
+OpenPopup(){
+  const dialog = this.dialog.open(HopDongPopup,{
+    width: '90%',
+    height: '600px',
+    data: {data:this.data.value,table:this.dataTable},
+    disableClose:true
+  })
+
+  dialog.afterClosed().subscribe((res:any)=>{
+    // console.log(res);
+    
+    this.dataTable = res.table;
+    this.data = this.fb.group({
+      benA:res.benA,
+      diaChiA:res.diaChiA,
+      dienThoaiA:res.dienThoaiA,
+      mstA:res.mstA,
+      daiDienA:res.daiDienA,
+      diaDiem:res.diaDiem,
+      timeThucHien: new Date(),
+      timeLapDat:new Date()
+    })
+  })
 }
 
   Export2Doc(element: any, filename = '') {

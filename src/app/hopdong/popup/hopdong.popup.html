@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-4">
+        <form class="text-center" autocomplete="off">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Tên bên A</mat-label>
+                <input matInput [(ngModel)]="ob.data.benA" name="bena" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Địa chỉ bên A</mat-label>
+                <textarea matInput [(ngModel)]="ob.data.diaChiA" name="diachi" required rows="3"></textarea>
+
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Điện thoại</mat-label>
+                <input matInput [(ngModel)]="ob.data.dienThoaiA" name="dienthoai" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Mã số thuế</mat-label>
+                <input matInput [(ngModel)]="ob.data.mstA" name="mst" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Đại diện bên A</mat-label>
+                <input matInput [(ngModel)]="ob.data.daiDienA" name="daidien" required>
+            </mat-form-field>
+            <br>
+
+            <button mat-raised-button color="primary" (click)="Close()">OK</button>
+        </form>
+    </div>
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 10%;">STT</th>
+                    <th scope="col">Hạng mục</th>
+                    <th scope="col">ĐVT</th>
+                    <th scope="col">Đơn giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Thành Tiền</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of ob.table" >
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.Stt">{{item.Stt}}</td>
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.HangMuc">{{item.HangMuc}}</td>         
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.Dvt">{{item.Dvt}}</td>
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.HangMuc">{{item.DonGia}}</td>
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.SoLuong">{{item.SoLuong}}</td>
+                    <td class="{{item.Stt}}label"><input type="text" class="form-control" [(ngModel)]="item.ThanhTien">{{item.ThanhTien}}</td>
+                </tr>
+                    <!-- edit  -->
+                    <td *ngIf="openCreate"><input type="number" class="form-control" disabled [(ngModel)]="addData.Stt"></td>
+                    <td *ngIf="openCreate"><input type="text" class="form-control" [(ngModel)]="addData.HangMuc"></td>
+                    <td *ngIf="openCreate"><input type="text" class="form-control" [(ngModel)]="addData.Dvt"></td>
+                    <td *ngIf="openCreate"> <input type="number" class="form-control" [(ngModel)]="addData.DonGia"></td>
+                    <td *ngIf="openCreate"><input type="number" class="form-control" [(ngModel)]="addData.SoLuong" (change)="Auto()"></td>
+                    <td *ngIf="openCreate">{{ addData.ThanhTien }}</td>
+                    
+                    <td *ngIf="openCreate"> <button mat-raised-button color="primary" (click)="Them()">Them</button>
+                        <button mat-raised-button color="info" (click)="Sua()">Sửa</button></td>
+               
+            </tbody>
+        </table>
+        <button mat-raised-button color="primary" (click)="AddRow()">Thêm</button>
+    </div>
+</div>
+
+<style>
+    mat-form-field {
+        width: 90%;
+        margin: 5px;
+        font-size: 12pt;
+    }
+</style>
