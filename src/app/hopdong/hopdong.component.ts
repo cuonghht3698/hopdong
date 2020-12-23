@@ -9,67 +9,76 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './hopdong.component.html',
   styleUrls: ['./hopdong.component.css']
 })
-export class HopdongComponent implements OnInit,AfterViewInit  {
-  constructor(private dialog:MatDialog,private fb:FormBuilder) { }
-   data!: FormGroup;
-   dateNow!: Date;
-   dataTable:any[] = [];
+export class HopdongComponent implements OnInit, AfterViewInit {
+  constructor(private dialog: MatDialog, private fb: FormBuilder) { }
+  data!: FormGroup;
+  dateNow!: Date;
+  dataTable: any[] = [];
+  tong:number = 0;
+  vat:number = 0;
+  tongAll = this.tong + this.vat;
   @ViewChild('myDiv') myDiv!: ElementRef;
 
-  
 
-  
+
+
   ngOnInit(): void {
-
+    
     this.dateNow = new Date();
     this.data = this.fb.group({
-      benA:'',
-      diaChiA:'',
-      dienThoaiA:'',
-      mstA:'',
-      daiDienA:'',
-      diaDiem:'',
+      benA: '',
+      diaChiA: '',
+      dienThoaiA: '',
+      mstA: '',
+      daiDienA: '',
+      diaDiem: '',
       timeThucHien: new Date(),
-      timeLapDat:new Date()
+      timeLapDat: new Date()
     })
-      this.OpenPopup();
+    this.OpenPopup();
   }
   ngAfterViewInit() {
     // console.log(this.myDiv.nativeElement.innerHTML);
-}
+  }
 
 
-OpenPopup(){
-  const dialog = this.dialog.open(HopDongPopup,{
-    width: '90%',
-    height: '600px',
-    data: {data:this.data.value,table:this.dataTable},
-    disableClose:true
-  })
-
-  dialog.afterClosed().subscribe((res:any)=>{
-    // console.log(res);
-    
-    this.dataTable = res.table;
-    this.data = this.fb.group({
-      benA:res.benA,
-      diaChiA:res.diaChiA,
-      dienThoaiA:res.dienThoaiA,
-      mstA:res.mstA,
-      daiDienA:res.daiDienA,
-      diaDiem:res.diaDiem,
-      timeThucHien: new Date(),
-      timeLapDat:new Date()
+  OpenPopup() {
+    const dialog = this.dialog.open(HopDongPopup, {
+      width: '90%',
+      height: '600px',
+      data: { data: this.data.value, table: this.dataTable },
+      disableClose: true
     })
-  })
-}
+
+    dialog.afterClosed().subscribe((res: any) => {
+      // console.log(res);
+
+      this.dataTable = res.table;
+      this.data = this.fb.group({
+        benA: res.data.benA,
+        diaChiA: res.data.diaChiA,
+        dienThoaiA: res.data.dienThoaiA,
+        mstA: res.data.mstA,
+        daiDienA: res.data.daiDienA,
+        diaDiem: res.data.diaDiem,
+        timeThucHien: new Date(),
+        timeLapDat: new Date()
+      });
+
+      for (let i = 0; i < res.table.length; i++) {
+            this.tong = res.table[i].ThanhTien;
+      };
+          this.vat = this.tong * 0.1;
+          this.tongAll = this.tong + this.vat;
+    })
+  }
 
   Export2Doc(element: any, filename = '') {
-    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>"; 
-   var postHtml = "</body></html>";
+    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var postHtml = "</body></html>";
     var html = preHtml + this.myDiv.nativeElement.innerHTML + postHtml;
     console.log(html);
-    
+
     var blob = new Blob(['\ufeff', html], {
       type: 'application/msword'
     });
