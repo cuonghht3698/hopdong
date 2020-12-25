@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseAPI: 'https://localhost:44395/api/'
-  // baseAPI: 'http://toolhd01.somee.com/api/'
+  //baseAPI: 'https://localhost:44395/api/'
+  baseAPI: 'https://toolhd01.somee.com/api/'
 
-  
+
 };
 
 /*

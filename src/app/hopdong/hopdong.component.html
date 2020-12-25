@@ -1,138 +1,141 @@
 <div style="position: fixed;left: 10px;top: 40%;">
-    <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br><br>
-    <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
+  <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br><br>
+  <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
 
-    <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button>
+  <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button>
 </div>
 <div id="printdiv" #myDiv>
-    <div class="a4" style="margin: auto;">
-        <div class="title" style="text-align: center;line-height: 1.5;">
-            <span style="font-size: 13pt;">
-                <b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b> <br>
-                <span style="line-height: 1.5">Độc lập – Tự Do – Hạnh Phúc</span> <br>
-                ---oOo--- <br>
-            </span>
-            <span style="font-size: 18pt;"> <b> HỢP ĐỒNG DỊCH VỤ</b> </span> <br>
-            <span style="font-size: 12pt;"> Số: 2706/20TTHN-NVT</span> <br><br>
+  <div class="a4" style="margin: auto;">
+    <div class="title" style="text-align: center;line-height: 1.5;">
+      <span style="font-size: 13pt;">
+        <b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b> <br>
+        <span style="line-height: 1.5">Độc lập – Tự Do – Hạnh Phúc</span> <br>
+        ---oOo--- <br>
+      </span>
+      <span style="font-size: 18pt;"> <b> HỢP ĐỒNG DỊCH VỤ</b> </span> <br>
+      <span style="font-size: 12pt;"> Số: 2706/20TTHN-NVT</span> <br><br>
 
-        </div>
+    </div>
 
-        <div class="info" style="margin-left: 60px;line-height: 1.5;">
-            <span style="line-height: 1.5;"><i>Hôm nay, ngày {{ dateNow.getDate() }} tháng {{dateNow.getMonth() + 1}}
-                    năm
-                    {{dateNow.getFullYear()}} chúng tôi gồm:</i></span>
-            <br>
+    <div class="info" style="margin-left: 60px;line-height: 1.7;">
+      <span style="line-height: 1.5;"><i>Hôm nay, ngày {{ dateNow.getDate() }} tháng {{dateNow.getMonth() + 1}}
+          năm
+          {{dateNow.getFullYear()}} chúng tôi gồm:</i></span>
+      <br>
 
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span><b>BÊN A</b></span><span style="position: absolute;left: 90pt;">: <b> {{data.value.benA}}</b></span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: {{data.value.diaChiA}}</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Điện thoại</span><span style="position: absolute;left: 90pt;">: {{data.value.dienThoaiA}}</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span><span style="position: absolute;left: 90pt;">: {{data.value.mstA}}</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: <b>{{ data.value.gioiTinh==1? "Ông":"Bà" }} {{data.value.daiDienA}}</b>-Chức vụ: {{ data.value.chucVu }}</span></pre>
-            <br>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><b><span>Bên B</span><span style="position: absolute;left: 90pt;">: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI		</span></b></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Do Ông</span><span style="position: absolute;left: 90pt;">: Ông <b>Bùi Anh Duy</b> - Chức vụ: Giám Đốc </span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: Số 43, TT33 Khu Đô thị Văn Phú, Phường Phúc La, Quận Hà Đông, TP. Hà Nội</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ nhận thư</span><span style="position: absolute;left: 90pt;">: A18- TT17 Khu Đô thị Văn Quán, Hà Đông, Hà Nội</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Điện thoại</span><span style="position: absolute;left: 90pt;">: 0962 824 222</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span>  <span style="position: absolute;left: 90pt;">: 0108188396</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tài khoản NH</span><span style="position: absolute;left: 90pt;">: <b>6899996868</b> tại Ngân hàng TMCP Á Châu- Chi nhánh Hà Nội</span></pre>
-            <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tên chủ tài khoản</span><span style="position: absolute;left: 90pt;">: Công ty TNHH Công Nghệ và Truyền Thông Hà Nội</span></pre>
-
-
-
-            <span style="line-height: 1.5">Sau khi bàn bạc, hai bên thống nhất ký kết hợp đồng với các điều khoản
-                sau:</span><br>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span><b>BÊN A</b></span><span style="position: absolute;left: 90pt;">: <b>{{data.value.benA}}</b></span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: {{data.value.diaChiA}}</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Điện thoại</span><span style="position: absolute;left: 90pt;">: {{data.value.dienThoaiA}}</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span><span style="position: absolute;left: 90pt;">: {{data.value.mstA}}</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: <b>{{data.value.gioiTinh==1? "Ông":"Bà" }} {{data.value.daiDienA}}</b>-Chức vụ: {{ data.value.chucVu }}</span></pre>
+      <br>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><b><span>Bên B</span><span style="position: absolute;left: 90pt;">: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI		</span></b></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Do Ông</span><span style="position: absolute;left: 90pt;">: Ông <b>Bùi Anh Duy</b> - Chức vụ: Giám Đốc </span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: Số 43, TT33 Khu Đô thị Văn Phú, Phường Phúc La, Quận Hà Đông, TP. Hà Nội</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ nhận thư</span><span style="position: absolute;left: 90pt;">: A18- TT17 Khu Đô thị Văn Quán, Hà Đông, Hà Nội</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Điện thoại</span><span style="position: absolute;left: 90pt;">: 0962 824 222</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span>  <span style="position: absolute;left: 90pt;">: 0108188396</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tài khoản NH</span><span style="position: absolute;left: 90pt;">: <b>6899996868</b> tại Ngân hàng TMCP Á Châu- Chi nhánh Hà Nội</span></pre>
+      <pre
+        style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tên chủ tài khoản</span><span style="position: absolute;left: 90pt;">: Công ty TNHH Công Nghệ và Truyền Thông Hà Nội</span></pre>
 
 
-        </div>
+
+      <span style="line-height: 1.5">Sau khi bàn bạc, hai bên thống nhất ký kết hợp đồng với các điều khoản
+        sau:</span><br>
+
+
+    </div>
+    <br>
+    <br>
+    <div class="dieu3">
+
+
+      <span style="line-height: 1.5"><b>ĐIỀU 1: NỘI DUNG HỢP ĐỒNG</b></span><br>
+      <span style="line-height: 1.5">Bên A đồng ý thuê bên B thực hiện hiệu ứng kỹ xảo khói lửa, khói lạnh nghệ thuật
+        thực hiện trong chương
+        trình “HỘI THI VĂN HOÁ VIETCOMBANK DƯỚI ÁNH SÁNG TƯ TƯỞNG HỒ CHÍ MINH”</span><br>
+      <span style="line-height: 1.5"><b>Giá trị hợp đồng: {{ tongAll | tiente}}</b></span><br>
+      <span style="line-height: 1.5"><i>(Bằng chữ: {{tienChu + 'đồng'}} ./. )</i></span>
+      <br>
+      <div class="table" style="border-collapse: collapse;text-align: center;">
+        <table border="1" style="width: 100%;border-collapse: collapse;">
+          <tr>
+            <th style="padding: 10px 5px;">STT</th>
+            <th style="padding: 10px 5px;">Hạng mục</th>
+            <th style="padding: 10px 5px;">ĐVT</th>
+            <th style="padding: 10px 5px;">Đơn giá</th>
+            <th style="padding: 10px 5px;">Số lượng</th>
+            <th style="padding: 10px 5px;">Thành Tiền</th>
+          </tr>
+          <tr *ngFor="let item of dataTable">
+            <td style="text-align: center;">{{item.Stt}}</td>
+            <td style="text-align: center;">{{item.HangMuc}}</td>
+            <td style="text-align: center;">{{item.Dvt}}</td>
+            <td style="text-align: center;">{{item.DonGia | tiente}}</td>
+            <td style="text-align: center;">{{item.SoLuong}}</td>
+            <td style="text-align: center;">{{item.ThanhTien | tiente}}</td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align: center;"><b>Tổng</b></td>
+            <td style="text-align: center;"><b>{{ tong | tiente}}</b></td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align: center;"><b>VAT</b></td>
+            <td style="text-align: center;"><b>{{ vat | tiente }}</b></td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align: center;"><b>Tổng giá trị hợp đồng</b></td>
+            <td style="text-align: center;"><b>{{ tongAll | tiente}}</b></td>
+          </tr>
+
+        </table>
+        <p class="tongtien text-left"><b>Tổng tiền trên đã bao gồm 10%VAT</b></p>
+      </div>
+
+      <div>
         <br>
-        <div class="dieu3">
+        <p><strong>ĐIỀU 2: PHƯƠNG THỨC THỰC HIỆN</strong></p>
+        <ul style="list-style-type: none; line-height: 2.2;">
+          <li>- Địa điểm trình diễn hiệu ứng: {{data.value.diaDiem}}</li>
+          <li>- Thời gian thực hiện: {{ data.value.timeThucHien | date:'dd/MM/yyyy'}}</li>
+          <li>- Thời gian lắp đặt: {{data.value.timeLapDat}}</li>
+        </ul>
+      </div>
+      <p><strong>ĐIỀU 3: GIÁ CẢ VÀ PHƯƠNG THỨC THANH TOÁN</strong></p>
 
-        
-        <span style="line-height: 1.5"><b>ĐIỀU 1: NỘI DUNG HỢP ĐỒNG</b></span><br>
-        <span style="line-height: 1.5">Bên A đồng ý thuê bên B thực hiện hiệu ứng kỹ xảo khói lửa, khói lạnh nghệ thuật
-            thực hiện trong chương
-            trình “HỘI THI VĂN HOÁ VIETCOMBANK DƯỚI ÁNH SÁNG TƯ TƯỞNG HỒ CHÍ MINH”</span><br>
-        <span style="line-height: 1.5"><b>Giá trị hợp đồng: {{ tongAll | tiente}}</b></span><br>
-        <span style="line-height: 1.5"><i>(Bằng chữ: {{tienChu + 'đồng'}} ./. )</i></span>
-        <br>
-        <div class="table" style="border-collapse: collapse;text-align: center;">
-            <table border="1" style="width: 100%;border-collapse: collapse;">
-                <tr>
-                    <th style="padding: 10px 5px;">STT</th>
-                    <th style="padding: 10px 5px;">Hạng mục</th>
-                    <th style="padding: 10px 5px;">ĐVT</th>
-                    <th style="padding: 10px 5px;">Đơn giá</th>
-                    <th style="padding: 10px 5px;">Số lượng</th>
-                    <th style="padding: 10px 5px;">Thành Tiền</th>
-                </tr>
-                <tr *ngFor="let item of dataTable">
-                    <td style="text-align: center;">{{item.Stt}}</td>
-                    <td style="text-align: center;">{{item.HangMuc}}</td>
-                    <td style="text-align: center;">{{item.Dvt}}</td>
-                    <td style="text-align: center;">{{item.DonGia | tiente}}</td>
-                    <td style="text-align: center;">{{item.SoLuong}}</td>
-                    <td style="text-align: center;">{{item.ThanhTien | tiente}}</td>
-                </tr>
-                <tr>
-                    <td colspan="5" style="text-align: center;"><b>Tổng</b></td>
-                    <td style="text-align: center;"><b>{{ tong | tiente}}</b></td>
-                </tr>
-                <tr>
-                    <td colspan="5" style="text-align: center;"><b>VAT</b></td>
-                    <td style="text-align: center;"><b>{{ vat | tiente }}</b></td>
-                </tr>
-                <tr>
-                    <td colspan="5" style="text-align: center;"><b>Tổng giá trị hợp đồng</b></td>
-                    <td style="text-align: center;"><b>{{ tongAll | tiente}}</b></td>
-                </tr>
+      <p style="margin-left: 35px;"><strong>Hình thức thanh toán: </strong>Thanh toán bằng tiền mặt hoặc chuyển khoản.
+      </p>
 
-            </table>
-            <p class="tongtien text-left"><b>Tổng tiền trên đã bao gồm 10%VAT</b></p>
-        </div>
-    
-        <div>
-            <p><strong>ĐIỀU 2: PHƯƠNG THỨC THỰC HIỆN</strong></p>
-            <ul style="list-style-type: none;">
-                <li>- Địa điểm trình diễn hiệu ứng: {{data.value.diaDiem}}</li>
-                <li>- Thời gian thực hiện: {{ data.value.timeThucHien | date:'dd/MM/yyyy'}}</li>
-                <li>- Thời gian lắp đặt: {{data.value.timeLapDat}}</li>
-            </ul>
-        </div>
-       
-
-
-        <p><strong>ĐIỀU 3: GIÁ CẢ VÀ PHƯƠNG THỨC THANH TOÁN</strong></p>
-
-        <p><strong>Hình thức thanh toán: </strong>Thanh toán bằng tiền mặt hoặc chuyển khoản.</p>
-
-        <p>- Bên A thanh toán cho bên B 100% giá trị theo hợp đồngsau khi diễn ra chương trình trong vòng 20 ngày sau
-            khi chương trình kết thúc đồng thời nhận chứng từ bên B bao gồm:</p>
-
+      <p style="margin-left: 35px;">- Bên A thanh toán cho bên B 100% giá trị theo hợp đồngsau khi diễn ra chương trình
+        trong vòng 20 ngày sau
+        khi chương trình kết thúc đồng thời nhận chứng từ bên B bao gồm:</p>
+      <div style="margin-left: 50px;">
         <p>+ <em>Thanh lý hợp đồng.</em></p>
 
         <p>+ <em>Hóa đơn, chứng từ hợp lệ sử dụng dịch vụ cho Bên A</em></p>
 
         <p>+ <em>Đề nghị thanh toán</em></p>
-
-        <p><strong>ĐIỀU 4: TRÁCH NHIỆM MỖI BÊN</strong></p>
-
+      </div>
+      <br>
+      <p><strong>ĐIỀU 4: TRÁCH NHIỆM MỖI BÊN</strong></p>
+      <div style="margin-left: 20px;">
         <ol start="1" type="1">
-            <li><strong>Trách nhiệm của bên A:</strong></li>
+          <li><strong>Trách nhiệm của bên A:</strong></li>
         </ol>
+
         <p>- Thanh toán cho bên B theo đúng quy định tại điều 3 của hợp đồng này.</p>
 
         <p>- Tạo điều kiện thuận lợi cho bên B tập kết lắp ráp hàng chuẩn bị thực hiện hợp đồng được thuận lợi.</p>
@@ -140,84 +143,110 @@
         <p>- Đảm bảo an ninh trật tự trong khu vực các bên thi công thực hiện.</p>
 
         <p>- Trong trường hợp đến thời điểm thực hiện trình diễn mà không thực hiện được do bất kỳ lý do gì không thuộc
-            về phía bên B (như mưa, gió bão ....) thì bên A vẫn thanh toán đầy đủ giá trị hợp đồng đã ký kết.</p>
+          về phía bên B (như mưa, gió bão ....) thì bên A vẫn thanh toán đầy đủ giá trị hợp đồng đã ký kết.</p>
 
         <ol start="2" type="1">
-            <li><strong>Trách nhiệm của bên B:</strong></li>
+          <li><strong>Trách nhiệm của bên B:</strong></li>
         </ol>
         <p>- Sau khi hợp đồng này được ký kết, bên B sẽ tiến hành việc thực hiện gia công, chuẩn bị lắp ghép theo kịch
-            bản đến khu vực tổ chức với thời gian chậm nhất là 8h sáng ngày để kịp thời gian cho việc chuẩn bị cũng như
-            đủ thời gian để xử lý các thay đổi phát sinh theo yêu cầu của ban tổ chức (nếu có).</p>
+          bản đến khu vực tổ chức với thời gian chậm nhất là 8h sáng ngày để kịp thời gian cho việc chuẩn bị cũng như
+          đủ thời gian để xử lý các thay đổi phát sinh theo yêu cầu của ban tổ chức (nếu có).</p>
 
         <p>- Đảm bảo thi công đúng tiến độ kỹ thuật, chất lượng công trình.</p>
 
         <p>- Đảm bảo an toàn lao động cho công nhân của mình trong quá trình thi công và suốt thời gian diễn ra chương
-            trình.</p>
+          trình.</p>
 
         <p>- Đảm bảo và chịu trách nhiệm, an toàn về PCCC, an toàn lao động và cháy nổ trong suốt quá trình thi công và
-            suốt thời gian diễn ra chương trình.</p>
+          suốt thời gian diễn ra chương trình.</p>
 
         <p>- Đảm bảo vệ sinh môi trường trong và sau khi làm.</p>
 
         <p>- Chịu trách nhiệm về con người và thiết bị trong quá trình thực hiện thi công và suốt thời gian diễn ra
-            chương trình.</p>
+          chương trình.</p>
 
         <p>- Chịu trách nhiệm về phòng chống cháy nổ khi sự cố xảy ra tại công trình trong quá trình thi công và suốt
-            thời gian diễn ra chương trình.</p>
+          thời gian diễn ra chương trình.</p>
 
         <p>- Bồi thường thiệt hại và chịu trách nhiệm với những sự cố ảnh hưởng đến con người, vật chất xảy ra do lỗi
-            thi công và an toàn của công trình của bên B trong quá trình thi công và suốt thời gian diễn ra chương
-            trình.</p>
+          thi công và an toàn của công trình của bên B trong quá trình thi công và suốt thời gian diễn ra chương
+          trình.</p>
 
         <p>- Xuất Hóa đơn GTGT hợp lệ cho Bên A mỗi đợt thanh toán. </p>
-
-        <p><strong>ĐIỀU 5: PHẠT VI PHẠM HỢP ĐỒNG</strong></p>
+      </div>
+      <br>
+      <p><strong>ĐIỀU 5: PHẠT VI PHẠM HỢP ĐỒNG</strong></p>
+      <div style="margin-left: 20px;">
 
         <p>- Trường hợp Bên B vi phạm yêu cầu về thời gian làm việc của Chương trình, hai bên đồng ý &amp;amp; xác nhận
-            rằng Bên A theo quyền quyết định của mình và mức độ nghiêm trọng của vi phạm có thể chọn một hay tất cả các
-            biện pháp sau (i) nhắc nhở Bên B, (ii) tạm ngưng thanh toán hoặc ngưng thanh toán (ii) phạt 8% Trị giá Hợp
-            đồng cho mỗi lần sai phạm, (iii) chấm dứt Hợp đồng trước Thời hạn, phạt vi phạm và yêu cầu bồi thường thiệt
-            hại tương đương 100% trị giá hợp đồng và các thiệt hại khác có liên quan.</p>
+          rằng Bên A theo quyền quyết định của mình và mức độ nghiêm trọng của vi phạm có thể chọn một hay tất cả các
+          biện pháp sau (i) nhắc nhở Bên B, (ii) tạm ngưng thanh toán hoặc ngưng thanh toán (ii) phạt 8% Trị giá Hợp
+          đồng cho mỗi lần sai phạm, (iii) chấm dứt Hợp đồng trước Thời hạn, phạt vi phạm và yêu cầu bồi thường thiệt
+          hại tương đương 100% trị giá hợp đồng và các thiệt hại khác có liên quan.</p>
 
         <p>- Trường hợp Bên B đơn phương ngưng thực hiện hay hủy bỏ Hợp đồng khi chưa được sự chấp thuận trước bằng văn
-            bản của Bên A thì phải bồi thường thiệt hại cho Bên A 100% Trị giá Hợp đồng. </p>
+          bản của Bên A thì phải bồi thường thiệt hại cho Bên A 100% Trị giá Hợp đồng. </p>
+      </div>
+      <br>
+      <p><strong>ĐIỀU 6: ĐIỀU KHOẢN CHUNG</strong></p>
+      <div style="margin-left: 20px;">
+      <p>- Hai bên cam kết thực hiện đầy đủ các điều khoản đã ghi trong hợp đồng, không đơn phương huỷ bỏ hợp đồng.
+        Nếu một trong hai bên đơn phương thay đổi hợp đồng thì phải chịu trách nhiệm trước pháp luật. Nếu có vướng
+        mắc thì cùng nhau thỏa thuận giải quyết trên tinh thần hợp tác.</p>
 
-        <p><strong>ĐIỀU 6: ĐIỀU KHOẢN CHUNG</strong></p>
+      <p>- Tùy thuộc vào yêu cầu của Chương trình, Bên A có toàn quyền xem xét duy trì hay ngưng Hợp đồng này trước
+        thời hạn. Trong trường hợp này Bên A sẽ thông báo cho Bên B trong thời gian sớm nhất và thanh toán cho Bên B
+        khoản trị giá tương ứng với số số chương trình phát sóng thực tế mà Bên B đã hoàn tất tham gia thực hiện
+        hoặc Bên B sẽ hoàn trả cho Bên A khoản trị giá mà Bên A đã thanh toán nhiều hơn số lượng chương trình Bên B
+        đã thực tế tham gia trong vòng 7 ngày sau khi nhận được thông báo từ Bên A.</p>
 
-        <p>- Hai bên cam kết thực hiện đầy đủ các điều khoản đã ghi trong hợp đồng, không đơn phương huỷ bỏ hợp đồng.
-            Nếu một trong hai bên đơn phương thay đổi hợp đồng thì phải chịu trách nhiệm trước pháp luật. Nếu có vướng
-            mắc thì cùng nhau thỏa thuận giải quyết trên tinh thần hợp tác.</p>
+      <p>- Trong quá trình thực hiện hợp đồng, nếu có vướng mắc gì làm ảnh hưởng đến tiến trình thực hiện hợp đồng hai
+        bên phải thông báo cho nhau bằng văn bản để cùng giải quyết. Mọi tranh chấp phát sinh từ hoặc liên quan đến
+        hợp đồng này sẽ được giải quyết bằng trọng tài tại Trung tâm Trọng tài Quốc tế Việt Nam bên cạnh Phòng
+        Thương mại và Công nghiệp Việt Nam (VIAC) theo Quy tắc tố tụng trọng tài của Trung tâm này. Địa điểm trọng
+        tài là Thành Phố Hồ Chí Minh, Việt Nam. Ngôn ngữ trọng tài là tiếng Việt. Luật áp dụng cho hợp đồng là luật
+        Việt Nam.</p>
 
-        <p>- Tùy thuộc vào yêu cầu của Chương trình, Bên A có toàn quyền xem xét duy trì hay ngưng Hợp đồng này trước
-            thời hạn. Trong trường hợp này Bên A sẽ thông báo cho Bên B trong thời gian sớm nhất và thanh toán cho Bên B
-            khoản trị giá tương ứng với số số chương trình phát sóng thực tế mà Bên B đã hoàn tất tham gia thực hiện
-            hoặc Bên B sẽ hoàn trả cho Bên A khoản trị giá mà Bên A đã thanh toán nhiều hơn số lượng chương trình Bên B
-            đã thực tế tham gia trong vòng 7 ngày sau khi nhận được thông báo từ Bên A.</p>
+      <p>- Hợp đồng tự động thanh lý khi các bên thực hiện hoàn tất quyền và nghĩa vụ của mình.</p>
 
-        <p>- Trong quá trình thực hiện hợp đồng, nếu có vướng mắc gì làm ảnh hưởng đến tiến trình thực hiện hợp đồng hai
-            bên phải thông báo cho nhau bằng văn bản để cùng giải quyết. Mọi tranh chấp phát sinh từ hoặc liên quan đến
-            hợp đồng này sẽ được giải quyết bằng trọng tài tại Trung tâm Trọng tài Quốc tế Việt Nam bên cạnh Phòng
-            Thương mại và Công nghiệp Việt Nam (VIAC) theo Quy tắc tố tụng trọng tài của Trung tâm này. Địa điểm trọng
-            tài là Thành Phố Hồ Chí Minh, Việt Nam. Ngôn ngữ trọng tài là tiếng Việt. Luật áp dụng cho hợp đồng là luật
-            Việt Nam.</p>
-
-        <p>- Hợp đồng tự động thanh lý khi các bên thực hiện hoàn tất quyền và nghĩa vụ của mình.</p>
-
-        <p>- Hợp đồng này được lập thành 02 bản mỗi bên giữ 01 bản và có giá trị như nhau.</p>
+      <p>- Hợp đồng này được lập thành 02 bản mỗi bên giữ 01 bản và có giá trị như nhau.</p>
+      </div>
     </div>
-
-
-    <div class="row ten" style="text-align: center;">
-        <div class="col-6 a01" >  <strong>DIỆN BÊN A</strong></div>
-        <div class="col-6 a02">  <strong>ĐẠI DIỆN BÊN B</strong></div>
+    <br>
+    <br>
+    <!-- <div class="row ten" style="text-align: center;">
+      <div class="col-6 a01"><strong>DIỆN BÊN A</strong></div>
+      <div class="col-6 a02"> <strong>ĐẠI DIỆN BÊN B</strong></div>
     </div>
     <br>
     <br>
     <br>
     <br>
     <div class="row ten" style="text-align: center;">
-        <div class="col-6 a03">  <strong>{{data.value.daiDienA}}</strong></div>
-        <div class="col-6 a04">  <strong>BÙI ANH DUY</strong></div>
-    </div>
+      <div class="col-6 a03"> <strong>{{data.value.daiDienA}}</strong></div>
+      <div class="col-6 a04"> <strong>BÙI ANH DUY</strong></div>
+    </div> -->
+
+
+
+    <div class="footer">
+      <div class="bena">
+        <strong>DIỆN BÊN A</strong> <br>
+        <br>
+        <br>
+        <strong>{{data.value.daiDienA}}</strong>
+      </div>
+      <div class="benb">
+        <strong>ĐẠI DIỆN BÊN B</strong><br>
+        <br>
+        <br>
+
+        <strong>BÙI ANH DUY</strong>
+      </div>
 
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>

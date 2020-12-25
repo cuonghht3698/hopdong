@@ -72,7 +72,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
 
       console.log(res);
       var s = 0;
-      
+
       for (let i = 0; i < res.table.length; i++) {
         s += res.table[i].ThanhTien;
       };
@@ -88,11 +88,28 @@ export class HopdongComponent implements OnInit, AfterViewInit {
 
   Export2Doc(element: any, filename = '') {
     var preHtml = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title>
-  //   <style>
-  //   .dieu3{
-  //     text-align: justify;
-  // }
-  //   </style>
+    <style>
+    .footer{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      text-align: center;
+    }
+
+    .bena{
+      /* background-color: aqua; */
+    }
+    .benb{
+      /* background-color: red; */
+    }
+    .footer div{
+      width: 50%;
+    }
+    .footer div strong{
+      width: 100%;
+    }
+
+    </style>
     </head><body>`;
     var postHtml = "</body></html>";
     var html = preHtml + this.myDiv.nativeElement.innerHTML + postHtml;

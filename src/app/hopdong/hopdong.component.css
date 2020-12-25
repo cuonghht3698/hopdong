@@ -10,7 +10,7 @@ span{
     word-spacing: 21px;
     white-space: normal;
     word-spacing: normal; */
-    
+
 }
 pre{
     font-family: "Times New Roman", Times, serif !important;
@@ -30,7 +30,9 @@ pre{
     height: 29.7cm;
 
 }
-
+p{
+  vertical-align: auto;
+}
 .text {
     font-size: 12pt;
     /* padding: 5px; */
@@ -63,5 +65,29 @@ th {
 table {}
 
 .dieu3{
-    text-align: justify;
+  text-align: justify;
+  padding: 0 25pt;
+  line-height: 1.5;
+}
+.dieu3 p {
+  margin-left: 20px;
+}
+.footer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+}
+
+.bena{
+  /* background-color: aqua; */
+}
+.benb{
+  /* background-color: red; */
+}
+.footer div{
+  width: 50%;
+}
+.footer div strong{
+  width: 100%;
 }

@@ -1,6 +1,7 @@
 .dieu3{
     text-align: justify;
     padding: 0 25pt;
+    line-height: 1.5;
 }
 
 .ten{
@@ -29,4 +30,24 @@
 
 .tongtien{
     text-align: left;
+}
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+}
+
+.bena{
+  background-color: aqua;
+}
+.benb{
+  background-color: red;
+}
+.footer div{
+  width: 50%;
+}
+.footer div strong{
+  width: 100%;
 }
