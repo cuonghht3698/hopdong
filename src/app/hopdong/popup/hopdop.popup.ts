@@ -7,7 +7,7 @@ declare var $: any;
 @Component({
     selector: 'hopdong-popup',
     templateUrl: './hopdong.popup.html',
-    
+
 })
 
 export class HopDongPopup implements OnInit {
@@ -46,10 +46,11 @@ export class HopDongPopup implements OnInit {
         this.openCreate = !this.openCreate;
     }
     Auto() {
-        this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" +String(this.addData.DonGia)).subscribe((res:any)=>{
-            // console.log(res);
-            this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
-          })
+        if (this.addData.DonGia > 0)
+            this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
+                // console.log(res);
+                this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
+            })
         this.addData.ThanhTien = this.addData.SoLuong * this.addData.DonGia;
     }
     Them() {
@@ -107,7 +108,7 @@ export class HopDongPopup implements OnInit {
 
             this.ob.data.daiDienA = item.daiDien
 
-            
+
     }
 
     SelectHM(item: any) {
@@ -122,10 +123,11 @@ export class HopDongPopup implements OnInit {
             SoLuong: 1,
             ThanhTien: item.donGia
         }
-        this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" +String(this.addData.DonGia)).subscribe((res:any)=>{
+        if (this.addData.DonGia > 0)
+        this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
             // console.log(res);
             this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
-          })
+        })
         this.checkUpdate = false;
 
     }
