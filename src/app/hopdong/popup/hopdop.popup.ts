@@ -70,6 +70,7 @@ export class HopDongPopup implements OnInit {
             SoLuong: 1,
             ThanhTien: 0
         };
+        this.showTienChu = '';
         this.toastr.success('Thêm hạng mục thành công!', 'Thông báo!');
     }
 
@@ -106,6 +107,7 @@ export class HopDongPopup implements OnInit {
 
             this.ob.data.daiDienA = item.daiDien
 
+            
     }
 
     SelectHM(item: any) {
@@ -120,6 +122,10 @@ export class HopDongPopup implements OnInit {
             SoLuong: 1,
             ThanhTien: item.donGia
         }
+        this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" +String(this.addData.DonGia)).subscribe((res:any)=>{
+            // console.log(res);
+            this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
+          })
         this.checkUpdate = false;
 
     }

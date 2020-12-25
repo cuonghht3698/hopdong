@@ -111,8 +111,8 @@
                     </td>
                     <td><input type="text" class="form-control" [(ngModel)]="addData.Dvt" placeholder="Đơn vị tính">
                     </td>
-                    <td style="position: relative;" class="dongia"><input type="number" class="form-control" [(ngModel)]="addData.DonGia" placeholder="Đơn giá" (change)="Auto()">
-                        <span style="position: absolute;left: -20px;top: 65px;" class="tienchu">{{ showTienChu }}</span>
+                    <td style="position: relative;" class="dongia"><input type="number" class="form-control" [(ngModel)]="addData.DonGia" placeholder="Đơn giá" (keyup)="Auto()">
+                        <span *ngIf="showTienChu" style="position: absolute;left: -20px;top: 65px;" class="tienchu">{{ showTienChu + 'đồng' }}</span>
                     </td>
                     <td><input type="number" class="form-control" [(ngModel)]="addData.SoLuong" placeholder="Số lượng"
                             (change)="Auto()"></td>
