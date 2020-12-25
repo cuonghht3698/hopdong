@@ -32,7 +32,7 @@
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span><span style="position: absolute;left: 90pt;">: {{data.value.mstA}}</span></pre>
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: {{data.value.daiDienA}}</span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: {{ data.value.gioiTinh==1? "Ông ":"Bà " }} {{data.value.daiDienA}} -Chức vụ: {{ data.value.chucVu }}</span></pre>
             <br>
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Bên B</span><span style="position: absolute;left: 90pt;">: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI		</span></pre>
@@ -64,8 +64,8 @@
         <span style="line-height: 1.5">Bên A đồng ý thuê bên B thực hiện hiệu ứng kỹ xảo khói lửa, khói lạnh nghệ thuật
             thực hiện trong chương
             trình “HỘI THI VĂN HOÁ VIETCOMBANK DƯỚI ÁNH SÁNG TƯ TƯỞNG HỒ CHÍ MINH”</span><br>
-        <span style="line-height: 1.5"><b>Giá trị hợp đồng: {{ tongAll }}</b></span><br>
-        <span style="line-height: 1.5"><i>(Bằng chữ: Hai mươi bảy triệu hai trăm tám mươi nghìn đồng ./. )</i></span>
+        <span style="line-height: 1.5"><b>Giá trị hợp đồng: {{ tongAll | tiente}}</b></span><br>
+        <span style="line-height: 1.5"><i>(Bằng chữ: {{tienChu + 'đồng'}} ./. )</i></span>
         <br>
         <div class="table" style="border-collapse: collapse;text-align: center;">
             <table border="1" style="width: 100%;border-collapse: collapse;">
@@ -78,30 +78,37 @@
                     <th style="padding: 10px 5px;">Thành Tiền</th>
                 </tr>
                 <tr *ngFor="let item of dataTable">
-                    <td>{{item.Stt}}</td>
-                    <td>{{item.HangMuc}}</td>
-                    <td>{{item.Dvt}}</td>
-                    <td>{{item.DonGia}}</td>
-                    <td>{{item.SoLuong}}</td>
-                    <td>{{item.ThanhTien}}</td>
+                    <td style="text-align: center;">{{item.Stt}}</td>
+                    <td style="text-align: center;">{{item.HangMuc}}</td>
+                    <td style="text-align: center;">{{item.Dvt}}</td>
+                    <td style="text-align: center;">{{item.DonGia | tiente}}</td>
+                    <td style="text-align: center;">{{item.SoLuong}}</td>
+                    <td style="text-align: center;">{{item.ThanhTien | tiente}}</td>
                 </tr>
                 <tr>
                     <td colspan="5" style="text-align: center;"><b>Tổng</b></td>
-                    <td style="text-align: center;"><b>{{ tong }}</b></td>
+                    <td style="text-align: center;"><b>{{ tong | tiente}}</b></td>
                 </tr>
                 <tr>
                     <td colspan="5" style="text-align: center;"><b>VAT</b></td>
-                    <td style="text-align: center;"><b>{{ vat }}</b></td>
+                    <td style="text-align: center;"><b>{{ vat | tiente }}</b></td>
                 </tr>
                 <tr>
                     <td colspan="5" style="text-align: center;"><b>Tổng giá trị hợp đồng</b></td>
-                    <td style="text-align: center;"><b>{{ tongAll}}</b></td>
+                    <td style="text-align: center;"><b>{{ tongAll | tiente}}</b></td>
                 </tr>
 
             </table>
             <p><b>Tổng tiền trên đã bao gồm 10%VAT</b></p>
         </div>
-        <div></div>
+        <div>
+            <p><strong>ĐIỀU 2: PHƯƠNG THỨC THỰC HIỆN</strong></p>
+            <ul style="list-style-type: none;">
+                <li>- Địa điểm trình diễn hiệu ứng: {{data.value.diaDiem}}</li>
+                <li>- Thời gian thực hiện: {{ data.value.timeThucHien | date:'dd/MM/yyyy'}}</li>
+                <li>- Thời gian lắp đặt: {{data.value.timeLapDat}}</li>
+            </ul>
+        </div>
         <p><strong>ĐIỀU 3: GIÁ CẢ VÀ PHƯƠNG THỨC THANH TOÁN</strong></p>
 
         <p><strong>Hình thức thanh toán: </strong>Thanh toán bằng tiền mặt hoặc chuyển khoản.</p>
@@ -194,27 +201,31 @@
 
 
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>ĐẠI DIỆN BÊN A</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span> ĐẠI DIỆN BÊN B</span>
-
-
-
-
-        <br>
-        <br>
-        <br>
-        <br>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>LÊ THỊ TRÚC QUỲNH</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>ĐẠI
+            DIỆN BÊN A</span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <strong> BÙI ANH DUY</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
+            ĐẠI DIỆN BÊN B</span>
 
 
-    <br>
-    <br>
-    <br>
-    <br>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>LÊ
+            THỊ TRÚC QUỲNH</strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong> BÙI ANH DUY</strong>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
     </div>

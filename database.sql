@@ -1,4 +1,4 @@
-CREATE DATABASE HD
+CREATE DATABASE QLHOPDONG
 GO
 USE QLHOPDONG
 GO
@@ -13,7 +13,6 @@ CREATE TABLE KHACHHANG
 	DaiDien nvarchar(250),
 	ChucVu nvarchar(100)
 )
-
 GO
 CREATE TABLE SANPHAM(
 	Id uniqueidentifier primary key,

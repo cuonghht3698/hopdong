@@ -1,8 +1,10 @@
+import { environment } from './../../environments/environment';
 
 import { HopDongPopup } from './popup/hopdop.popup';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hopdong',
@@ -10,20 +12,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./hopdong.component.css']
 })
 export class HopdongComponent implements OnInit, AfterViewInit {
-  constructor(private dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private http:HttpClient) { }
   data!: FormGroup;
   dateNow!: Date;
   dataTable: any[] = [];
-  tong:number = 0;
-  vat:number = 0;
+  tong: number = 0;
+  vat: number = 0;
   tongAll = this.tong + this.vat;
+  tienChu = '';
   @ViewChild('myDiv') myDiv!: ElementRef;
 
 
 
 
   ngOnInit(): void {
-    
     this.dateNow = new Date();
     this.data = this.fb.group({
       benA: '',
@@ -32,8 +34,10 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       mstA: '',
       daiDienA: '',
       diaDiem: '',
+      gioiTinh: "1",
+      chucVu: '',
       timeThucHien: new Date(),
-      timeLapDat: new Date()
+      timeLapDat: ''
     })
     this.OpenPopup();
   }
@@ -44,32 +48,40 @@ export class HopdongComponent implements OnInit, AfterViewInit {
 
   OpenPopup() {
     const dialog = this.dialog.open(HopDongPopup, {
-      width: '90%',
-      height: '600px',
+      width: '95%',
+      height: '90%',
       data: { data: this.data.value, table: this.dataTable },
       disableClose: true
     })
 
     dialog.afterClosed().subscribe((res: any) => {
-      // console.log(res);
-
+      console.log(res);
       this.dataTable = res.table;
       this.data = this.fb.group({
         benA: res.data.benA,
         diaChiA: res.data.diaChiA,
         dienThoaiA: res.data.dienThoaiA,
         mstA: res.data.mstA,
+        gioiTinh: res.data.gioiTinh,
+        chucVu: res.data.chucVu,
         daiDienA: res.data.daiDienA,
         diaDiem: res.data.diaDiem,
-        timeThucHien: new Date(),
-        timeLapDat: new Date()
+        timeThucHien: res.data.timeThucHien,
+        timeLapDat: res.data.timeLapDat
       });
 
+      console.log(res);
+      var s = 0;
       for (let i = 0; i < res.table.length; i++) {
-            this.tong = res.table[i].ThanhTien;
+        s += res.table[i].ThanhTien;
       };
-          this.vat = this.tong * 0.1;
-          this.tongAll = this.tong + this.vat;
+      this.tong = s;
+      this.vat = this.tong * 0.1;
+      this.tongAll = this.tong + this.vat;
+      this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" +String(this.tongAll)).subscribe((res:any)=>{
+        // console.log(res);
+        this.tienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
+      })
     })
   }
 
@@ -109,4 +121,9 @@ export class HopdongComponent implements OnInit, AfterViewInit {
 
     document.body.removeChild(downloadLink);
   }
+
+  // convert so sang chữ
+
+
+
 }
