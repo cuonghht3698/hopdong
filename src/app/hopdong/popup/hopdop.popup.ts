@@ -117,8 +117,8 @@ export class HopDongPopup implements OnInit {
             HangMuc: item.hangMuc,
             Dvt: item.dvt,
             DonGia: item.donGia,
-            SoLuong: 0,
-            ThanhTien: 0
+            SoLuong: 1,
+            ThanhTien: item.donGia
         }
         this.checkUpdate = false;
 
