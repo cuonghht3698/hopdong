@@ -1,5 +1,5 @@
 <div style="position: fixed;left: 10px;top: 40%;">
-    <button printSectionId="printdiv" ngxPrint class="btn btn-info">IN</button><br><br>
+    <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br><br>
     <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
 
     <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button>
@@ -24,7 +24,7 @@
             <br>
 
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>BÊN A</span><span style="position: absolute;left: 90pt;">: {{data.value.benA}}</span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span><b>BÊN A</b></span><span style="position: absolute;left: 90pt;">: <b> {{data.value.benA}}</b></span></pre>
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: {{data.value.diaChiA}}</span></pre>
             <pre
@@ -32,12 +32,12 @@
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span><span style="position: absolute;left: 90pt;">: {{data.value.mstA}}</span></pre>
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: {{ data.value.gioiTinh==1? "Ông ":"Bà " }} {{data.value.daiDienA}} -Chức vụ: {{ data.value.chucVu }}</span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Đại diện</span><span style="position: absolute;left: 90pt;">: <b>{{ data.value.gioiTinh==1? "Ông":"Bà" }} {{data.value.daiDienA}}</b>-Chức vụ: {{ data.value.chucVu }}</span></pre>
             <br>
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Bên B</span><span style="position: absolute;left: 90pt;">: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI		</span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><b><span>Bên B</span><span style="position: absolute;left: 90pt;">: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI		</span></b></pre>
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Do Ông</span><span style="position: absolute;left: 90pt;">: Ông Bùi Anh Duy - Chức vụ: Giám Đốc </span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Do Ông</span><span style="position: absolute;left: 90pt;">: Ông <b>Bùi Anh Duy</b> - Chức vụ: Giám Đốc </span></pre>
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Địa chỉ</span><span style="position: absolute;left: 90pt;">: Số 43, TT33 Khu Đô thị Văn Phú, Phường Phúc La, Quận Hà Đông, TP. Hà Nội</span></pre>
             <pre
@@ -47,7 +47,7 @@
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Mã số thuế</span>  <span style="position: absolute;left: 90pt;">: 0108188396</span></pre>
             <pre
-                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tài khoản NH</span><span style="position: absolute;left: 90pt;">: 6899996868 tại Ngân hàng TMCP Á Châu- Chi nhánh Hà Nội</span></pre>
+                style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tài khoản NH</span><span style="position: absolute;left: 90pt;">: <b>6899996868</b> tại Ngân hàng TMCP Á Châu- Chi nhánh Hà Nội</span></pre>
             <pre
                 style="font-family: 'Times New Roman', Times, serif;font-size: 12pt;margin: 0;position: relative;"><span>Tên chủ tài khoản</span><span style="position: absolute;left: 90pt;">: Công ty TNHH Công Nghệ và Truyền Thông Hà Nội</span></pre>
 
@@ -59,7 +59,9 @@
 
         </div>
         <br>
+        <div class="dieu3">
 
+        
         <span style="line-height: 1.5"><b>ĐIỀU 1: NỘI DUNG HỢP ĐỒNG</b></span><br>
         <span style="line-height: 1.5">Bên A đồng ý thuê bên B thực hiện hiệu ứng kỹ xảo khói lửa, khói lạnh nghệ thuật
             thực hiện trong chương
@@ -99,8 +101,9 @@
                 </tr>
 
             </table>
-            <p><b>Tổng tiền trên đã bao gồm 10%VAT</b></p>
+            <p class="tongtien text-left"><b>Tổng tiền trên đã bao gồm 10%VAT</b></p>
         </div>
+    
         <div>
             <p><strong>ĐIỀU 2: PHƯƠNG THỨC THỰC HIỆN</strong></p>
             <ul style="list-style-type: none;">
@@ -109,6 +112,9 @@
                 <li>- Thời gian lắp đặt: {{data.value.timeLapDat}}</li>
             </ul>
         </div>
+       
+
+
         <p><strong>ĐIỀU 3: GIÁ CẢ VÀ PHƯƠNG THỨC THANH TOÁN</strong></p>
 
         <p><strong>Hình thức thanh toán: </strong>Thanh toán bằng tiền mặt hoặc chuyển khoản.</p>
@@ -198,34 +204,20 @@
         <p>- Hợp đồng tự động thanh lý khi các bên thực hiện hoàn tất quyền và nghĩa vụ của mình.</p>
 
         <p>- Hợp đồng này được lập thành 02 bản mỗi bên giữ 01 bản và có giá trị như nhau.</p>
+    </div>
 
 
+    <div class="row ten" style="text-align: center;">
+        <div class="col-6 a01" >  <strong>DIỆN BÊN A</strong></div>
+        <div class="col-6 a02">  <strong>ĐẠI DIỆN BÊN B</strong></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row ten" style="text-align: center;">
+        <div class="col-6 a03">  <strong>THỊ TRÚC QUỲNH</strong></div>
+        <div class="col-6 a04">  <strong>BÙI ANH DUY</strong></div>
+    </div>
 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>ĐẠI
-            DIỆN BÊN A</span>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>
-            ĐẠI DIỆN BÊN B</span>
-
-
-
-
-        <br>
-        <br>
-        <br>
-        <br>
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>LÊ
-            THỊ TRÚC QUỲNH</strong>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong> BÙI ANH DUY</strong>
-
-
-        <br>
-        <br>
-        <br>
-        <br>
     </div>

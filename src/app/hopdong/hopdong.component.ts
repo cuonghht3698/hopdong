@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./hopdong.component.css']
 })
 export class HopdongComponent implements OnInit, AfterViewInit {
-  constructor(private dialog: MatDialog, private fb: FormBuilder, private http:HttpClient) { }
+  constructor(private dialog: MatDialog, private fb: FormBuilder, private http: HttpClient) { }
   data!: FormGroup;
   dateNow!: Date;
   dataTable: any[] = [];
@@ -72,13 +72,14 @@ export class HopdongComponent implements OnInit, AfterViewInit {
 
       console.log(res);
       var s = 0;
+      
       for (let i = 0; i < res.table.length; i++) {
         s += res.table[i].ThanhTien;
       };
       this.tong = s;
       this.vat = this.tong * 0.1;
       this.tongAll = this.tong + this.vat;
-      this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" +String(this.tongAll)).subscribe((res:any)=>{
+      this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.tongAll)).subscribe((res: any) => {
         // console.log(res);
         this.tienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
       })
@@ -86,7 +87,13 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   }
 
   Export2Doc(element: any, filename = '') {
-    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var preHtml = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title>
+  //   <style>
+  //   .dieu3{
+  //     text-align: justify;
+  // }
+  //   </style>
+    </head><body>`;
     var postHtml = "</body></html>";
     var html = preHtml + this.myDiv.nativeElement.innerHTML + postHtml;
     console.log(html);

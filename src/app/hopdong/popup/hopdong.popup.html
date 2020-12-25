@@ -3,12 +3,12 @@
     <div class="col-3">
 
         <form class="text-center" autocomplete="off">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" > 
                 <mat-label>Nhập số điện thoại</mat-label>
-                <mat-select>
-                    <mat-form-field appearance="outline" style="margin: auto;width:96%">
+                <mat-select >
+                    <mat-form-field appearance="outline" style="margin: auto;width:96%" >
                         <mat-label>Số điện thoại</mat-label>
-                        <input matInput [(ngModel)]="seacrh.dienThoai" name="search">
+                        <input matInput [(ngModel)]="seacrh.dienThoai" name="search" autocomplete="off" >
                     </mat-form-field>
                     <mat-option *ngFor="let state of dsKhachHang | filterBy: seacrh" [value]="state"
                         (click)="Select(state)">{{state.benA}}</mat-option>
@@ -72,7 +72,7 @@
             <mat-select>
                 <mat-form-field appearance="outline" style="margin: auto;width:96%">
                     <mat-label>Hạng mục</mat-label>
-                    <input matInput [(ngModel)]="seacrh1.hangMuc" name="search1">
+                    <input matInput [(ngModel)]="seacrh1.hangMuc" name="search1" autocomplete="off">
                 </mat-form-field>
                 <mat-option *ngFor="let state of dsDanhMuc | filterBy: seacrh1" [value]="state"
                     (click)="SelectHM(state)">{{state.hangMuc}}</mat-option>

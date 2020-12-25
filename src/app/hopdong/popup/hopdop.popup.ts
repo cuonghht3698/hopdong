@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
 declare var $: any;
 @Component({
     selector: 'hopdong-popup',
-    templateUrl: './hopdong.popup.html'
+    templateUrl: './hopdong.popup.html',
+    
 })
 
 export class HopDongPopup implements OnInit {

@@ -1,0 +1,32 @@
+.dieu3{
+    text-align: justify;
+    padding: 0 25pt;
+}
+
+.ten{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.a01{
+    position: absolute;
+    left: 20%;
+}
+
+.a02{
+    position: absolute;
+    left: 60%;
+}
+.a03{
+    position: absolute;
+    left: 16%;
+}
+
+.a04{
+    position: absolute;
+    left: 62%;
+}
+
+.tongtien{
+    text-align: left;
+}
