@@ -1,4 +1,4 @@
-<div style="position: fixed;left: 10px;top: 40%;">
+<div style="position: fixed;left: 10px;top: 40%;" class="menu">
   <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br><br>
   <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
 
@@ -231,16 +231,17 @@
 
     <div class="footer">
       <div class="bena">
-        <strong>DIỆN BÊN A</strong> <br>
+        <strong>ĐẠI DIỆN BÊN A</strong> <br>
         <br>
         <br>
-        <strong>{{data.value.daiDienA}}</strong>
+        <br>
+        <strong>{{data.value.daiDienA | uppercase}}</strong>
       </div>
       <div class="benb">
         <strong>ĐẠI DIỆN BÊN B</strong><br>
         <br>
         <br>
-
+        <br>
         <strong>BÙI ANH DUY</strong>
       </div>
 
