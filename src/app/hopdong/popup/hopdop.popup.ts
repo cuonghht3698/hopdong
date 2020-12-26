@@ -113,7 +113,6 @@ export class HopDongPopup implements OnInit {
 
     SelectHM(item: any) {
         // console.log(item);
-
         this.addData =
         {
             Stt: this.ob.table.length + 1,

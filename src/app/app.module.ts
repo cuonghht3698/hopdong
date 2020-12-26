@@ -15,12 +15,14 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { QuanLyPopUp } from './hopdong/popupQL/quanly.popup';
 @NgModule({
   declarations: [
     AppComponent,
     HopdongComponent,
     HopDongPopup,
-    TienTePipe
+    TienTePipe,
+    QuanLyPopUp
 
   ],
   imports: [
@@ -35,6 +37,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     HttpClientModule,
     FilterPipeModule,
     ToastrModule.forRoot(),
+
 
   ],
   providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }}],
