@@ -48,7 +48,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       timeLapDat: '',
     });
     // this.OpenPopup();
-    this.OpenQL();
+    // this.OpenQL();
   }
   ngAfterViewInit() {
     // console.log(this.myDiv.nativeElement.innerHTML);
