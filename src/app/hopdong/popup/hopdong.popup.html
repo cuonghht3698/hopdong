@@ -16,27 +16,27 @@
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Tên bên A</mat-label>
-                <input matInput [(ngModel)]="ob.data.benA" name="bena" required>
+                <input matInput [(ngModel)]="ob.data.benA" name="bena" required (change)="checkdoitac()">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Địa chỉ bên A</mat-label>
-                <textarea matInput [(ngModel)]="ob.data.diaChiA" name="diachi" required rows="3"></textarea>
+                <textarea matInput [(ngModel)]="ob.data.diaChiA" name="diachi" required rows="3" (change)="checkdoitac()"></textarea>
 
             </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Điện thoại</mat-label>
-                <input matInput [(ngModel)]="ob.data.dienThoaiA" name="dienthoai" required>
+                <input matInput [(ngModel)]="ob.data.dienThoaiA" name="dienthoai" required (change)="checkdoitac()">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Mã số thuế</mat-label>
-                <input matInput [(ngModel)]="ob.data.mstA" name="mst" required>
+                <input matInput [(ngModel)]="ob.data.mstA" name="mst" required (change)="checkdoitac()">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Đại diện bên A</mat-label>
-                <input matInput [(ngModel)]="ob.data.daiDienA" name="daidien" required>
+                <input matInput [(ngModel)]="ob.data.daiDienA" name="daidien" required (change)="checkdoitac()">
             </mat-form-field>
             <br>
             <section style="margin-left: 10px;float: left;">
@@ -48,8 +48,9 @@
             </section>
             <mat-form-field appearance="fill">
                 <mat-label>Chức vụ</mat-label>
-                <input matInput [(ngModel)]="ob.data.chucVu" name="cv" required>
+                <input matInput [(ngModel)]="ob.data.chucVu" name="cv" required (change)="checkdoitac()">
             </mat-form-field>
+            <button mat-raised-button color="primary" *ngIf="doitacmoi" (click)="DoiTacMoi()">Phát hiện đối tác mới?Thêm</button>
             <mat-form-field appearance="fill">
                 <mat-label>Địa điểm thực hiện</mat-label>
                 <textarea matInput [(ngModel)]="ob.data.diaDiem" name="diadiem1" required rows="3"></textarea>
@@ -139,7 +140,9 @@
         margin: 2px;
         font-size: 10pt;
     }
-
+    button {
+    outline: none;
+}
     .xacnhan {
         margin: auto;
         position: absolute;

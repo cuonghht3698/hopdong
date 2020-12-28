@@ -1,9 +1,9 @@
 <div style="position: fixed;left: 10px;top: 40%;" class="menu">
   <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br><br>
   <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
+  <button mat-raised-button color="warn" (click)="OpenQL()">Quản lý</button><br><br>
 
-  <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button>
-  <button mat-raised-button color="warn" (click)="OpenQL()">Quản lý</button>
+  <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button><br><br>
 
 </div>
 <div id="printdiv" #myDiv>

@@ -102,7 +102,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   }
   OpenQL() {
     const dialog1 = this.dialog.open(QuanLyPopUp, {
-      width: '95%',
+      width: '100%',
       height: '90%',
       disableClose: true,
     });

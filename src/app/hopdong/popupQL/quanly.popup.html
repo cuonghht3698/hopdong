@@ -1,20 +1,28 @@
-<button mat-raised-button color="warn">Thoát</button>
+<button mat-raised-button color="warn" (click)="Close()">Thoát</button>
+<button mat-raised-button color="primary" class="ml-1" (click)="FullKH()">{{ !fullKH?'Quản lý đối tác':'Quản lý hạng mục'}}</button>
 <div class="row">
-  <div class="col" style="width: 47%;box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  <div *ngIf="!fullKH" class="col" style="width: 47%;box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   padding: 30px 20px;">
     <div class="row" style="max-height: 400px;overflow: auto;">
+      <h2>Quản lý hạng mục</h2>
+      <mat-form-field appearance="fill" style="width: 40%;">
+        <mat-label>Tìm kiếm hạng mục</mat-label>
+        <input matInput [(ngModel)]="searchDM.hangMuc" name="searchDM">
+      </mat-form-field>
       <table class="table table-hover" style="text-align: center;">
+
         <thead>
           <tr>
             <th scope="col" style="width: 10%;">STT</th>
             <th scope="col" style="width: 30%;">Hạng mục</th>
             <th scope="col">ĐVT</th>
             <th scope="col">Đơn giá</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of dsHangMuc; index as i">
+          <tr *ngFor="let item of dsHangMuc | filterBy:searchDM ; index as i"  (click)="selectHM(item)">
             <!-- <td>{{i + 1}} <button mat-mini-fab color="warn"
                   (click)="Xoa(item)"><span class="material-icons">
                       clear
@@ -23,7 +31,12 @@
             <td>{{item.hangMuc}}</td>
             <td>{{item.dvt}}</td>
             <td>{{item.donGia }}</td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="Xoa(item.id)"><span class="material-icons">
+                delete
+                </span></button>
 
+            </td>
 
           </tr>
         </tbody>
@@ -31,7 +44,10 @@
       </table>
 
     </div>
-    <div class="row crud">
+    <h3 style="color: brown;">Thêm/ sửa Hạng mục</h3>
+
+    <div class="row">
+      <div class="col-8">
       <mat-form-field appearance="fill">
         <mat-label>Tên hạng mục:</mat-label>
         <input matInput [(ngModel)]="HangMuc.HangMuc" name="ms1t" required>
@@ -42,85 +58,129 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Đơn giá</mat-label>
-        <input matInput [(ngModel)]="HangMuc.DonGia" name="ms13" required>
+        <input matInput type="number" min="0" [(ngModel)]="HangMuc.DonGia" name="ms13" required (keyup)="docTien()">
       </mat-form-field>
-      <button mat-raised-button color="primary">Thêm hạng mục</button>
+      <div class="alert alert-success ml-4" role="alert" *ngIf="HangMuc.DonGia >0">
+        {{tienchu}}
+      </div>
+      <div class="alert alert-primary ml-4" role="alert">
+        {{ HangMuc.Id == '00000000-0000-0000-0000-000000000000'?'Bạn đang trong chế độ THÊM danh mục!' : 'Bạn đang trong chế độ SỬA danh mục!' }}
+       </div>
+      </div>
+      <div class="col-4">
+        <div class="alert alert-info ml-4" role="alert">
+          Thông báo !
+          Các mục không được để trống . 
+          <br>
+          <br>
 
+          Mục đơn giá chỉ chứa ký tự số !
+         </div>
+      </div>
+    </div>
+    <div class="ml-5">
+    <button mat-raised-button color="primary" (click)="CreateOrUpdateHM()">{{ HangMuc.Id == '00000000-0000-0000-0000-000000000000'?'Thêm hạng mục' : 'Sửa hạng mục' }}</button>
+    <button mat-raised-button color="warn" class="ml-1" (click)="Huy()"> {{ HangMuc.Id == '00000000-0000-0000-0000-000000000000'?'Hủy' : 'Hủy sửa' }}</button>
     </div>
   </div>
-  <div class="col" style="width: 47%;box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  <div *ngIf="fullKH" class="col" style="width: 47%;box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   padding: 30px 20px;">
-  <!-- KHACH HANG -->
+    <!-- KHACH HANG -->
     <div class="row">
+    
+    <h2>Quản lý đối tác</h2>
+    <div>
+    <mat-form-field appearance="fill" style="width: 50%;" class="mr-2">
+      <mat-label>Tìm đối tác:</mat-label>
+      <input matInput [(ngModel)]="searchKH.benA" name="ms1t" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="width: 40%;">
+      <mat-label>Tìm số điện thoại</mat-label>
+      <input matInput [(ngModel)]="searchKH.dienThoai" name="ms1t" required>
+    </mat-form-field>
+  </div>
       <table class="table table-hover" style="text-align: center;">
         <thead>
           <tr>
-            <th scope="col" style="width: 10%;">STT</th>
-            <th scope="col" style="width: 30%;">Hạng mục</th>
-            <th scope="col">ĐVT</th>
-            <th scope="col">Đơn giá</th>
+            <th scope="col" style="width: 4%;">STT</th>
+            <th scope="col" style="width: 30%;">Bên A</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Điện thoại</th>
+            <th scope="col">Mã số thuế</th>
+            <th scope="col">Đại diện</th>
+            <th>Giới Tính</th>
+            <th>Chức vụ</th>
+            <th>Thao tác</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of dsHangMuc; index as i">
-            <!-- <td>{{i + 1}} <button mat-mini-fab color="warn"
-                  (click)="Xoa(item)"><span class="material-icons">
-                      clear
-                  </span></button></td> -->
-            <td>{{i + 1}}</td>
-            <td>{{item.hangMuc}}</td>
-            <td>{{item.dvt}}</td>
-            <td>{{item.donGia }}</td>
-
-
+          <tr *ngFor="let item of dsKhachHang | filterBy:searchKH; index as i" (click)="selectKH(item)">
+            <td>{{i + 1}} </td>
+            <td>{{item.benA}}</td>
+            <td>{{item.diaChi}}</td>
+            <td>{{item.dienThoai }}</td>
+            <td>{{item.mst }}</td>
+            <td>{{item.daiDien }}</td>
+            <td>{{item.gioiTinh == true?'Nam':'Nữ' }}</td>
+            <td>{{item.chucVu }}</td>
+            <td><button mat-mini-fab color="warn" (click)="XoaKH(item.id)"><span class="material-icons">
+              delete
+              </span></button></td>
           </tr>
         </tbody>
 
       </table>
+
     </div>
     <div class="row">
       <mat-form-field appearance="fill">
         <mat-label>Tên bên A</mat-label>
-        <input matInput [(ngModel)]="KhachHang.benA" name="bena" required>
+        <input matInput [(ngModel)]="KhachHang.BenA" name="bena" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Địa chỉ bên A</mat-label>
-        <textarea matInput [(ngModel)]="KhachHang.diaChiA" name="diachi" required rows="3"></textarea>
+        <textarea matInput [(ngModel)]="KhachHang.DiaChi" name="diachi" required rows="3"></textarea>
 
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Điện thoại</mat-label>
-        <input matInput [(ngModel)]="KhachHang.dienThoaiA" name="dienthoai" required>
+        <input matInput [(ngModel)]="KhachHang.DienThoai" name="dienthoai" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Mã số thuế</mat-label>
-        <input matInput [(ngModel)]="KhachHang.mstA" name="mst" required>
+        <input matInput [(ngModel)]="KhachHang.Mst" name="mst" required>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Đại diện bên A</mat-label>
-        <input matInput [(ngModel)]="KhachHang.daiDienA" name="daidien" required>
+        <input matInput [(ngModel)]="KhachHang.DaiDien" name="daidien" required>
       </mat-form-field>
       <br>
       <section style="margin-left: 10px;float: left;">
         <label>Giới tính:</label>
-        <mat-radio-group [(ngModel)]="KhachHang.gioiTinh" name="gioitinh">
-          <mat-radio-button value="1">Nam </mat-radio-button>
-          <mat-radio-button value="0"> Nữ</mat-radio-button>
+        <mat-radio-group [(ngModel)]="KhachHang.GioiTinh" name="gioitinh">
+          <mat-radio-button [value]="true">Nam </mat-radio-button>
+          <mat-radio-button [value]="false"> Nữ</mat-radio-button>
         </mat-radio-group>
       </section>
       <mat-form-field appearance="fill">
         <mat-label>Chức vụ</mat-label>
-        <input matInput [(ngModel)]="KhachHang.chucVu" name="cv" required>
+        <input matInput [(ngModel)]="KhachHang.ChucVu" name="cv" required>
       </mat-form-field>
     </div>
+    <div class="ml-5">
+      <button mat-raised-button color="primary" (click)="CreateOrUpdateKH()">{{ KhachHang.Id == '00000000-0000-0000-0000-000000000000'?'Thêm đối tác' : 'Sửa đối tác' }}</button>
+      <button mat-raised-button color="warn" class="ml-1" (click)="HuyKH()"> {{ KhachHang.Id == '00000000-0000-0000-0000-000000000000'?'Hủy' : 'Hủy sửa' }}</button>
+      </div>
   </div>
 </div>
 <style>
   mat-form-field {
-    margin: 10px;
+    /* margin: 10px; */
+    margin: auto;
+    width: 90%;
   }
 </style>

@@ -17,6 +17,7 @@ export class HopDongPopup implements OnInit {
     dsDanhMuc: any;
     showTienChu: any;
     dsKhachHang: any;
+    doitacmoi:boolean = false;
     seacrh: any = { dienThoai: '' };
     seacrh1: any = { hangMuc: '' };
 
@@ -78,7 +79,23 @@ export class HopDongPopup implements OnInit {
     Sua(stt: any) {
 
     }
-
+    checkdoitac(){
+        var data = {
+            Id: '00000000-0000-0000-0000-000000000000',
+            BenA: this.ob.data.benA,
+            DiaChi: this.ob.data.diaChiA,
+            DienThoai: this.ob.data.dienThoaiA,
+            Mst: this.ob.data.mstA,
+            DaiDien: this.ob.data.daiDienA,
+            GioiTinh: this.ob.data.gioiTinh == "1" ? true : false,
+            ChucVu: this.ob.data.chucVu
+        }
+        this.http.post(environment.baseAPI + 'khachhang/checkdoitac',data).subscribe((res: any) => {
+            this.doitacmoi = true;
+        },error=>{
+            this.doitacmoi = false;
+        })
+    }
     getAllKH() {
         this.http.get(environment.baseAPI + 'khachhang/getAll').subscribe((res: any) => {
             console.log(res);
@@ -108,9 +125,29 @@ export class HopDongPopup implements OnInit {
 
             this.ob.data.daiDienA = item.daiDien
 
-
+            this.doitacmoi = false;
     }
+    DoiTacMoi() {
 
+        var data = {
+            Id: '00000000-0000-0000-0000-000000000000',
+            BenA: this.ob.data.benA,
+            DiaChi: this.ob.data.diaChiA,
+            DienThoai: this.ob.data.dienThoaiA,
+            Mst: this.ob.data.mstA,
+            DaiDien: this.ob.data.daiDienA,
+            GioiTinh: this.ob.data.gioiTinh == "1" ? true : false,
+            ChucVu: this.ob.data.chucVu
+        }
+        console.log(data);
+        this.http.post(environment.baseAPI + 'khachhang', data).subscribe((res) => {
+            this.toastr.success('Luu đối tác thành công', 'Thông báo');
+        },(err)=>{
+            this.toastr.error("Đối tác đã có trong hệ thống!", 'Thông báo');
+
+        });
+        this.doitacmoi = false;
+    }
     SelectHM(item: any) {
         // console.log(item);
         this.addData =
@@ -123,10 +160,10 @@ export class HopDongPopup implements OnInit {
             ThanhTien: item.donGia
         }
         if (this.addData.DonGia > 0)
-        this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
-            // console.log(res);
-            this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
-        })
+            this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
+                // console.log(res);
+                this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
+            })
         this.checkUpdate = false;
 
     }
