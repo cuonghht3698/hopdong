@@ -1,3 +1,4 @@
+import { FunService } from './../../service/fun';
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -11,13 +12,13 @@ declare var $: any;
 })
 
 export class HopDongPopup implements OnInit {
-    constructor(private dialog: MatDialogRef<HopDongPopup>, @Inject(MAT_DIALOG_DATA) public ob: any, private http: HttpClient, private toastr: ToastrService) { }
+    constructor(private dialog: MatDialogRef<HopDongPopup>, @Inject(MAT_DIALOG_DATA) public ob: any, private http: HttpClient, private toastr: ToastrService, private doctien: FunService) { }
     checkUpdate: boolean = false;
     openCreate?: boolean = false;
     dsDanhMuc: any;
     showTienChu: any;
     dsKhachHang: any;
-    doitacmoi:boolean = false;
+    doitacmoi: boolean = false;
     seacrh: any = { dienThoai: '' };
     seacrh1: any = { hangMuc: '' };
 
@@ -47,11 +48,10 @@ export class HopDongPopup implements OnInit {
         this.openCreate = !this.openCreate;
     }
     Auto() {
-        if (this.addData.DonGia > 0)
-            this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
-                // console.log(res);
-                this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
-            })
+        if (this.addData.DonGia >= 0)
+        this.showTienChu = this.doctien.DocTien(this.addData.DonGia);
+    else
+        this.showTienChu = 'Không ';
         this.addData.ThanhTien = this.addData.SoLuong * this.addData.DonGia;
     }
     Them() {
@@ -72,14 +72,14 @@ export class HopDongPopup implements OnInit {
             SoLuong: 1,
             ThanhTien: 0
         };
-        this.showTienChu = '';
+        this.showTienChu = 'Không';
         this.toastr.success('Thêm hạng mục thành công!', 'Thông báo!');
     }
 
     Sua(stt: any) {
 
     }
-    checkdoitac(){
+    checkdoitac() {
         var data = {
             Id: '00000000-0000-0000-0000-000000000000',
             BenA: this.ob.data.benA,
@@ -90,9 +90,9 @@ export class HopDongPopup implements OnInit {
             GioiTinh: this.ob.data.gioiTinh == "1" ? true : false,
             ChucVu: this.ob.data.chucVu
         }
-        this.http.post(environment.baseAPI + 'khachhang/checkdoitac',data).subscribe((res: any) => {
+        this.http.post(environment.baseAPI + 'khachhang/checkdoitac', data).subscribe((res: any) => {
             this.doitacmoi = true;
-        },error=>{
+        }, error => {
             this.doitacmoi = false;
         })
     }
@@ -125,7 +125,7 @@ export class HopDongPopup implements OnInit {
 
             this.ob.data.daiDienA = item.daiDien
 
-            this.doitacmoi = false;
+        this.doitacmoi = false;
     }
     DoiTacMoi() {
 
@@ -142,7 +142,7 @@ export class HopDongPopup implements OnInit {
         console.log(data);
         this.http.post(environment.baseAPI + 'khachhang', data).subscribe((res) => {
             this.toastr.success('Luu đối tác thành công', 'Thông báo');
-        },(err)=>{
+        }, (err) => {
             this.toastr.error("Đối tác đã có trong hệ thống!", 'Thông báo');
 
         });
@@ -159,11 +159,10 @@ export class HopDongPopup implements OnInit {
             SoLuong: 1,
             ThanhTien: item.donGia
         }
-        if (this.addData.DonGia > 0)
-            this.http.get(environment.baseAPI + "hangmuc/chuyendoitien?number=" + String(this.addData.DonGia)).subscribe((res: any) => {
-                // console.log(res);
-                this.showTienChu = res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);;
-            })
+        if (this.addData.DonGia >= 0)
+            this.showTienChu = this.doctien.DocTien(this.addData.DonGia);
+        else
+            this.showTienChu = 'Không ';
         this.checkUpdate = false;
 
     }

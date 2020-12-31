@@ -12,6 +12,10 @@ body {
   text-align: center;
   left: 10px;top: 40%;
 }
+
+.menu button{
+  width: 200px;
+}
 span{
     /* letter-spacing: 0.5px;
     word-spacing: 21px;
@@ -103,7 +107,7 @@ button {
 }
 .example-box {
 
-  width: 200px;
+  width: 240px;
   height: 300px;
   border: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);

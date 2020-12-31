@@ -74,6 +74,8 @@ export class FunService {
             }
             hauto = " tỷ";
         } while (so > 0);
+
+        chuoi = chuoi.charAt(1).toUpperCase() + chuoi.slice(2);
         return chuoi;
     }
 

@@ -18,6 +18,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { QuanLyPopUp } from './hopdong/popupQL/quanly.popup';
 import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR } from '@angular/material/button-toggle';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,9 @@ import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESS
 
 
   ],
-  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }}],
+  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }},
+              {provide: MAT_DATE_LOCALE, useValue:'vi-VN'}                
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

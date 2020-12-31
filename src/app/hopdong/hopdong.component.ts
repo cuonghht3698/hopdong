@@ -41,8 +41,6 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   @ViewChild('myDiv') myDiv!: ElementRef;
 
   ngOnInit(): void {
-    
-    
     this.dateNow = new Date();
     this.data = this.fb.group({
       benA: '',
@@ -98,7 +96,6 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       this.vat = this.tong * 0.1;
       this.tongAll = this.tong + this.vat;
       this.tienChu = this.docso.DocTien(this.tongAll);
-      this.tienChu = this.tienChu.charAt(0).toUpperCase() +  this.tienChu.slice(1);
     
     });
   }

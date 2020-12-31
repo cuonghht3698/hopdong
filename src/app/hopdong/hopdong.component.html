@@ -1,11 +1,17 @@
 <div style="position: fixed;left: 10px;top: 40%;" class="menu example-box" cdkDrag>
-  <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" class="btn btn-info">IN</button><br>
-  <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">DOWNLOAD</button><br><br>
-  <button mat-raised-button color="warn" (click)="OpenQL()">Quản lý</button><br><br>
+  <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" mat-raised-button color="primary"><span class="material-icons">
+    print
+    </span> IN</button><br><br>
+  <button (click)="Export2Doc('a4', 'hop-dong');" class="btn btn-success">Tải về(Đang nâng cấp)</button><br><br>
+  <button mat-raised-button color="warn" (click)="OpenQL()"><span class="material-icons">
+    style
+    </span> Quản lý</button><br><br>
 
-  <button mat-raised-button color="primary" (click)="OpenPopup()">Nhập dữ liệu</button><br><br>
+  <button mat-raised-button color="primary" (click)="OpenPopup()"><span class="material-icons">
+    keyboard
+    </span> Nhập dữ liệu</button><br><br>
 
-  <button mat-raised-button color="primary" (click)="CreateLSHopDong()">Luu hop dong</button><br><br>
+  <!-- <button mat-raised-button color="primary" (click)="CreateLSHopDong()">Luu hop dong</button><br><br> -->
 
 
 </div>
