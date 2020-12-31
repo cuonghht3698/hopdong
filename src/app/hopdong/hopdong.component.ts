@@ -1,3 +1,4 @@
+import { FunService } from './../service/fun';
 import { LichSuService } from './../service/lichsu.s';
 import { ChiTietLichSu, Guid, LichSuModel } from './../models/lichsu.model';
 import { environment } from './../../environments/environment';
@@ -25,7 +26,8 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog,
     private fb: FormBuilder,
     private http: HttpClient,
-    private ls: LichSuService
+    private ls: LichSuService,
+    private docso:FunService
   ) { }
 
   dataAll: any;
@@ -39,6 +41,8 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   @ViewChild('myDiv') myDiv!: ElementRef;
 
   ngOnInit(): void {
+    
+    
     this.dateNow = new Date();
     this.data = this.fb.group({
       benA: '',
@@ -93,17 +97,9 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       this.tong = s;
       this.vat = this.tong * 0.1;
       this.tongAll = this.tong + this.vat;
-      this.http
-        .get(
-          environment.baseAPI +
-          'hangmuc/chuyendoitien?number=' +
-          String(this.tongAll)
-        )
-        .subscribe((res: any) => {
-          // console.log(res);
-          this.tienChu =
-            res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);
-        });
+      this.tienChu = this.docso.DocTien(this.tongAll);
+      this.tienChu = this.tienChu.charAt(0).toUpperCase() +  this.tienChu.slice(1);
+    
     });
   }
   OpenQL() {
