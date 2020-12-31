@@ -1,3 +1,4 @@
+import { LichSuComponent } from './hopdong/lichsu/lichsu.component';
 import { TienTePipe } from './hopdong/pipecustom/currency.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { HopDongPopup } from './hopdong/popup/hopdop.popup';
@@ -23,7 +24,8 @@ import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESS
     HopdongComponent,
     HopDongPopup,
     TienTePipe,
-    QuanLyPopUp
+    QuanLyPopUp,
+    LichSuComponent
 
   ],
   imports: [

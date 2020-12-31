@@ -1,5 +1,7 @@
+import { LichSuService } from './../service/lichsu.s';
+import { ChiTietLichSu, Guid, LichSuModel } from './../models/lichsu.model';
 import { environment } from './../../environments/environment';
-
+import * as moment from 'moment';
 import { HopDongPopup } from './popup/hopdop.popup';
 import {
   AfterViewInit,
@@ -22,8 +24,11 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private http: HttpClient
-  ) {}
+    private http: HttpClient,
+    private ls: LichSuService
+  ) { }
+
+  dataAll: any;
   data!: FormGroup;
   dateNow!: Date;
   dataTable: any[] = [];
@@ -63,7 +68,8 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     });
 
     dialog.afterClosed().subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
+      this.dataAll = res;
       this.dataTable = res.table;
       this.data = this.fb.group({
         benA: res.data.benA,
@@ -78,7 +84,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
         timeLapDat: res.data.timeLapDat,
       });
 
-      console.log(res);
+      // console.log(res);
       var s = 0;
 
       for (let i = 0; i < res.table.length; i++) {
@@ -90,8 +96,8 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       this.http
         .get(
           environment.baseAPI +
-            'hangmuc/chuyendoitien?number=' +
-            String(this.tongAll)
+          'hangmuc/chuyendoitien?number=' +
+          String(this.tongAll)
         )
         .subscribe((res: any) => {
           // console.log(res);
@@ -134,7 +140,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     </head><body>`;
     var postHtml = '</body></html>';
     var html = preHtml + this.myDiv.nativeElement.innerHTML + postHtml;
-    console.log(html);
+    // console.log(html);
 
     var blob = new Blob(['\ufeff', html], {
       type: 'application/msword',
@@ -169,4 +175,68 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   }
 
   // convert so sang chữ
+
+
+  // LICH SU HOP DONG
+
+  CtLichSu: ChiTietLichSu = {
+    Id: Guid.Empty,
+    DonGia: 0,
+    Dvt: '',
+    HangMuc: '',
+    LichSuId: Guid.Empty,
+    SoLuong: 0,
+    ThanhTien: 0,
+  }
+  lichsu: LichSuModel = {
+    BenA: '',
+    ChucVu: '',
+    DaiDien: '',
+    DiaChi: '',
+    DiaDienTrinhDien: '',
+    DienThoai: '',
+    GiaTriHopDong: 0,
+    GioiTinh: true,
+    Id: Guid.Empty,
+    Mst: '',
+    NgayTao: moment().format(),
+    ThoiGianLapDat: '',
+    ThoiGianThucHien: moment().format(),
+    Tong: 0,
+    Vat: 0,
+    ChiTiet: Array<ChiTietLichSu>()
+  }
+
+
+  CreateLSHopDong() {
+    // console.log(this.dataAll);
+    this.lichsu = {
+      BenA: this.dataAll.data.benA,
+      ChucVu: this.dataAll.data.chucVu,
+      DaiDien: this.dataAll.data.daiDienA,
+      DiaChi: this.dataAll.data.diaChiA,
+      DiaDienTrinhDien: this.dataAll.data.diaDiem,
+      DienThoai: this.dataAll.data.dienThoaiA,
+      GiaTriHopDong: this.tongAll,
+      GioiTinh: this.dataAll.data.gioiTinh == "1" ? true : false,
+      Id: Guid.Empty,
+      Mst: this.dataAll.data.mstA,
+      NgayTao: moment().format(),
+      ThoiGianLapDat: this.dataAll.data.timeLapDat,
+      ThoiGianThucHien: moment(this.dataAll.data.timeThucHien).format(),
+      Tong: this.tong,
+      Vat: this.vat,
+      ChiTiet: Array<ChiTietLichSu>()
+    }
+
+    this.dataAll.table.forEach((item: any) => {
+      this.lichsu.ChiTiet.push(Object.assign(item, { Id: Guid.Empty, LichSuId: Guid.Empty }))
+    });
+    console.log(this.lichsu);
+
+    this.ls.Create(this.lichsu).subscribe((res) => {
+      // console.log(res);
+
+    })
+  }
 }
