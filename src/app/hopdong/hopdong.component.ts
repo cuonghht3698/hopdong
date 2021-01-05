@@ -53,6 +53,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       chucVu: '',
       timeThucHien: new Date(),
       timeLapDat: '',
+      tenCT:''
     });
     // this.OpenPopup();
     // this.OpenQL();
@@ -84,6 +85,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
         diaDiem: res.data.diaDiem,
         timeThucHien: res.data.timeThucHien,
         timeLapDat: res.data.timeLapDat,
+        tenCT: res.data.tenCT,
       });
 
       // console.log(res);
@@ -96,7 +98,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       this.vat = this.tong * 0.1;
       this.tongAll = this.tong + this.vat;
       this.tienChu = this.docso.DocTien(this.tongAll);
-    
+
     });
   }
   OpenQL() {

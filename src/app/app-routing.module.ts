@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path:'*',component:HopdongComponent},
-  {path:'lichsu',component:LichSuComponent},
+  {path:'hopdong',component:LichSuComponent},
   {path:'',component:HopdongComponent},
 
 ];

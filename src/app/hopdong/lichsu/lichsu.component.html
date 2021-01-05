@@ -1,1 +1,25 @@
-ad
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Bên A</th>
+      <th scope="col">Địa chỉ</th>
+      <th scope="col">Điện thoại</th>
+      <th scope="col">Giá trị hợp đồng</th>
+      <th scope="col">Ngày tạo</th>
+      <th scope="col">Trạng thái</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data;index as index">
+      <th scope="row">{{ index + 1 }}</th>
+      <td>{{ item.benA }}</td>
+      <td>{{item.diaChi}}</td>
+      <td>{{item.dienThoai}}</td>
+      <td>{{item.giaTriHopDong}}</td>
+      <td>{{item.ngayTao | date}}</td>
+      <td>Chua có</td>
+    </tr>
+  </tbody>
+</table>

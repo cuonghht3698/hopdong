@@ -1,4 +1,6 @@
 <div style="position: fixed;left: 10px;top: 40%;" class="menu example-box" cdkDrag>
+  <button mat-raised-button color="primary" (click)="CreateLSHopDong()">Luu hop dong</button><br><br>
+
   <button printSectionId="printdiv" ngxPrint styleSheetFile="assets/style.css" mat-raised-button color="primary"><span class="material-icons">
     print
     </span> IN</button><br><br>
@@ -11,7 +13,8 @@
     keyboard
     </span> Nhập dữ liệu</button><br><br>
 
-  <!-- <button mat-raised-button color="primary" (click)="CreateLSHopDong()">Luu hop dong</button><br><br> -->
+  <a style="width: 100%;text-decoration: none;" routerLink="hopdong" mat-raised-button color="primary" >Lịch sử hợp đồng</a><br><br>
+
 
 
 </div>
@@ -76,8 +79,7 @@
 
       <span style="line-height: 1.5"><b>ĐIỀU 1: NỘI DUNG HỢP ĐỒNG</b></span><br>
       <span style="line-height: 1.5">Bên A đồng ý thuê bên B thực hiện hiệu ứng kỹ xảo khói lửa, khói lạnh nghệ thuật
-        thực hiện trong chương
-        trình “HỘI THI VĂN HOÁ VIETCOMBANK DƯỚI ÁNH SÁNG TƯ TƯỞNG HỒ CHÍ MINH”</span><br>
+        thực hiện trong chương trình “{{ data.value.tenCT | uppercase}}”</span><br>
       <span style="line-height: 1.5"><b>Giá trị hợp đồng: {{ tongAll | tiente}}</b></span><br>
       <span style="line-height: 1.5"><i>(Bằng chữ: {{tienChu + ' đồng'}} ./. )</i></span>
       <br>
@@ -130,7 +132,7 @@
       <p style="margin-left: 35px;"><strong>Hình thức thanh toán: </strong>Thanh toán bằng tiền mặt hoặc chuyển khoản.
       </p>
 
-      <p style="margin-left: 35px;">- Bên A thanh toán cho bên B 100% giá trị theo hợp đồngsau khi diễn ra chương trình
+      <p style="margin-left: 35px;">- Bên A thanh toán cho bên B 100% giá trị theo hợp đồng sau khi diễn ra chương trình
         trong vòng 20 ngày sau
         khi chương trình kết thúc đồng thời nhận chứng từ bên B bao gồm:</p>
       <div style="margin-left: 50px;">

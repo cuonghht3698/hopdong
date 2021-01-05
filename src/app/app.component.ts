@@ -9,6 +9,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  title = 'toolsp1';
+  title = 'PCT';
 
 }

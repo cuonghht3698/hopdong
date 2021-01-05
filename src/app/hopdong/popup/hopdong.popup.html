@@ -3,7 +3,7 @@
     <div class="col-3">
 
         <form class="text-center" autocomplete="off">
-            <mat-form-field appearance="fill" > 
+            <mat-form-field appearance="fill" >
                 <mat-label>Nhập số điện thoại</mat-label>
                 <mat-select >
                     <mat-form-field appearance="outline" style="margin: auto;width:96%" >
@@ -50,6 +50,10 @@
                 <mat-label>Chức vụ</mat-label>
                 <input matInput [(ngModel)]="ob.data.chucVu" name="cv" required (change)="checkdoitac()">
             </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Tên chương trình</mat-label>
+              <textarea matInput [(ngModel)]="ob.data.tenCT" name="ms1t1" required rows="3"></textarea>
+          </mat-form-field>
             <button mat-raised-button color="primary" *ngIf="doitacmoi" (click)="DoiTacMoi()">Phát hiện đối tác mới?Thêm</button>
             <mat-form-field appearance="fill">
                 <mat-label>Địa điểm thực hiện</mat-label>
