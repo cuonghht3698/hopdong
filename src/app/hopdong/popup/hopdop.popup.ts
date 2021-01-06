@@ -82,6 +82,7 @@ export class HopDongPopup implements OnInit {
     checkdoitac() {
         var data = {
             Id: '00000000-0000-0000-0000-000000000000',
+            maKh:'',
             BenA: this.ob.data.benA,
             DiaChi: this.ob.data.diaChiA,
             DienThoai: this.ob.data.dienThoaiA,
@@ -110,8 +111,9 @@ export class HopDongPopup implements OnInit {
     }
     Select(item: any) {
         // console.log(item);
+            this.ob.data.maKh = item.maKh,
 
-        this.ob.data.benA = item.benA,
+            this.ob.data.benA = item.benA,
 
             this.ob.data.diaChiA = item.diaChi,
 
@@ -131,6 +133,7 @@ export class HopDongPopup implements OnInit {
 
         var data = {
             Id: '00000000-0000-0000-0000-000000000000',
+            maKh: this.ob.data.maKh,
             BenA: this.ob.data.benA,
             DiaChi: this.ob.data.diaChiA,
             DienThoai: this.ob.data.dienThoaiA,

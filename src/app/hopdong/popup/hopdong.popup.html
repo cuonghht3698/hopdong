@@ -15,6 +15,10 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
+              <mat-label>Mã định danh</mat-label>
+              <input matInput [(ngModel)]="ob.data.maKh" name="makh">
+          </mat-form-field>
+            <mat-form-field appearance="fill">
                 <mat-label>Tên bên A</mat-label>
                 <input matInput [(ngModel)]="ob.data.benA" name="bena" required (change)="checkdoitac()">
             </mat-form-field>

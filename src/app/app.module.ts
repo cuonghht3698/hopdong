@@ -3,7 +3,7 @@ import { TienTePipe } from './hopdong/pipecustom/currency.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { HopDongPopup } from './hopdong/popup/hopdop.popup';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { QuanLyPopUp } from './hopdong/popupQL/quanly.popup';
 import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR } from '@angular/material/button-toggle';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { LichSuPop } from './hopdong/lichsu/popupLS/lichsuPop';
+import { ThanhlyComponent } from './thanhly/thanhly/thanhly.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     HopDongPopup,
     TienTePipe,
     QuanLyPopUp,
-    LichSuComponent
+    LichSuComponent,
+    LichSuPop,
+    ThanhlyComponent
 
   ],
   imports: [
@@ -45,7 +49,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 
   ],
   providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' }},
-              {provide: MAT_DATE_LOCALE, useValue:'vi-VN'}                
+              {provide: MAT_DATE_LOCALE, useValue:'vi-VN'}
 ],
   bootstrap: [AppComponent]
 })

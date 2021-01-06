@@ -1,25 +1,32 @@
+<h1>Lịch sử hợp đồng</h1>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">STT</th>
       <th scope="col">Bên A</th>
+      <th scope="col">Đại diện</th>
       <th scope="col">Địa chỉ</th>
       <th scope="col">Điện thoại</th>
       <th scope="col">Giá trị hợp đồng</th>
       <th scope="col">Ngày tạo</th>
       <th scope="col">Trạng thái</th>
-
+      <th scope="col">Thao tác</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of data;index as index">
       <th scope="row">{{ index + 1 }}</th>
       <td>{{ item.benA }}</td>
+      <td>{{ item.daiDien }}</td>
       <td>{{item.diaChi}}</td>
       <td>{{item.dienThoai}}</td>
-      <td>{{item.giaTriHopDong}}</td>
-      <td>{{item.ngayTao | date}}</td>
-      <td>Chua có</td>
+      <td>{{item.giaTriHopDong | tiente}}</td>
+      <td>{{item.ngayTao | date:'dd/MM/yyyy, h:mm a'}}</td>
+      <td>{{ item.trangThai == true?'Đã thanh lý':'Chưa thanh lý' }}</td>
+      <td><button mat-raised-button color="primary" (click)="OpenHangMuc(item)">Hạng mục</button>
+        <a mat-raised-button color="warm" routerLink="../thanhly/{{item.id}}" *ngIf="!item.trangThai">Thanh lý hợp đồng</a>
+
+      </td>
     </tr>
   </tbody>
 </table>

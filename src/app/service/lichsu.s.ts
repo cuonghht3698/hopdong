@@ -12,4 +12,8 @@ export class LichSuService {
   GetAll() {
     return this.http.get(environment.baseAPI + 'lichsu/getAll');
   }
+
+  GetbyId(id:any) {
+    return this.http.get(environment.baseAPI + 'lichsu/' + id);
+  }
 }

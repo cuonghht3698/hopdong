@@ -1,20 +1,27 @@
 import { Guid, LichSuModel, ChiTietLichSu } from './../../models/lichsu.model';
 import { Component, OnInit } from '@angular/core';
 import { LichSuService } from 'src/app/service/lichsu.s';
+import { MatDialog } from '@angular/material/dialog';
+import { LichSuPop } from './popupLS/lichsuPop';
 
 @Component({
   selector: 'app-lichsu',
   templateUrl: './lichsu.component.html',
 })
 export class LichSuComponent implements OnInit {
-  constructor(private ls: LichSuService) {}
+  constructor(private ls: LichSuService, private dialog:MatDialog) {}
   data: any;
   ngOnInit() {
     this.GetAll();
     this.lichsu.ChiTiet.push(this.CtLichSu, this.CtLichSu);
     console.log(this.lichsu);
   }
-
+  OpenHangMuc(item:any){
+    const dialog = this.dialog.open(LichSuPop,{
+      width: 'auto',
+      data:item
+    })
+  }
   GetAll() {
     this.ls.GetAll().subscribe((res) => {
       this.data = res;
