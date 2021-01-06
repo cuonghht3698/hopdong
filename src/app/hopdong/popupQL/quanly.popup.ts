@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { FunService } from 'src/app/service/fun';
 declare var $: any;
 @Component({
   selector: 'hopdong-popup',
@@ -13,7 +14,8 @@ export class QuanLyPopUp implements OnInit {
     private dialog: MatDialogRef<QuanLyPopUp>,
     @Inject(MAT_DIALOG_DATA) public ob: any,
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private fun:FunService
   ) { }
   dsHangMuc: any;
   dsKhachHang: any;
@@ -91,17 +93,7 @@ export class QuanLyPopUp implements OnInit {
 
   }
   docTien() {
-    this.http
-      .get(
-        environment.baseAPI +
-        'hangmuc/chuyendoitien?number=' +
-        String(this.HangMuc.DonGia)
-      )
-      .subscribe((res: any) => {
-        // console.log(res);
-        this.tienchu =
-          res.tienChu.charAt(0).toUpperCase() + res.tienChu.slice(1);
-      });
+        this.tienchu =this.fun.DocTien(this.HangMuc.DonGia);
   }
   Xoa(id: any) {
     if (confirm("Xóa?")) {

@@ -211,6 +211,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     maKH:'',
     ngayKy: new Date(),
     soTK:'',
+    tenCT:'',
     ChiTiet: Array<ChiTietLichSu>()
   }
 
@@ -237,6 +238,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       maKH :this.dataAll.data.maKH,
       ngayKy:this.dataAll.data.ngayKy,
       soTK: this.dataAll.data.soTK,
+      tenCT:this.dataAll.data.tenCT,
       ChiTiet: Array<ChiTietLichSu>()
     }
 

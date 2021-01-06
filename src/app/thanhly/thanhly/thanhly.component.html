@@ -1,144 +1,171 @@
-<p>thanhly works!</p>
-<button printSectionId="printdiv" styleSheetFile="assets/thanhly.css" ngxPrint mat-raised-button color="primary"><span
-    class="material-icons">
-    print
-  </span> IN</button><br><br>
-<div id="printdiv">
-  <div class="a4" style=" text-align: justify;padding-left: 30px;position: relative;">
-    <div style="text-align: center;">
-      <p><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></p>
-      <p><b>Độc lập – Tự do – Hạnh phúc.</b></p>
-      <p><b>--------o0o-------</b></p>
-      <p><b>BIÊN BẢN THANH LÝ HỢP ĐỒNG </b></p>
-    </div>
-    <br>
-
-    <div>
-      <p style="text-indent: 35px;line-height: 1.5;">-Căn cứ vào hợp đồng cung cấp dịch vụ Số: aaaaaaaaaaaaaaaaaaaaaa
-        đã ký ngày
-        00/00/0000
-        giữa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa và Công Ty TNHH Công Nghệ và Truyền Thông Hà Nội;</p>
-      <p style=" text-indent: 35px;line-height: 1.5;">-Căn cứ vào kết quả nghiệm thu khối lượng công việc hoàn thành, chương trình kết
-        thúc
-        ngày 00 tháng 00 năm 0000.
-      </p>
-      <p>Hôm nay, Ngày 04 tháng 01 năm 2021</p>
-    </div>
-
-    <!-- ben a -->
-    <div style="line-height: 1.5;">
-      <p><b>BÊN A: CÔNG TY TNHH QUẢNG CÁO VÀ GIẢI TRÍ T.O.P</b></p>
-
-      <p>Địa chỉ <span style="position: absolute;left: 130px;">: 170N Nơ Trang Long, Phường 12, Quận Bình Thạnh, TP Hồ Chí Minh</span></p>
-      <p>VP giao dịch <span style="position: absolute;left: 130px;">: 331 Bến Vân Đồn, Phường 1, Quận 4, TPHCM</span></p>
-      <p>Điện thoại <span style="position: absolute;left: 130px;">: 028 6673 8686</span></p>
-      <p>Đại diện bởi <span style="position: absolute;left: 130px;">: Ông Trần Đình Vân Trình Chức vụ: Giám đốc</span></p>
-      <p>MST <span style="position: absolute;left: 130px;">: 0310775575</span></p>
-      <p><b>(Sau đây gọi tắt là Bên A)</b></p>
+<div>
 
 
-      <!-- ben b -->
+  <button printSectionId="printdiv" styleSheetFile="assets/thanhly.css" ngxPrint mat-raised-button color="primary"><span
+      class="material-icons">
+      print
+    </span> IN</button><br><br>
 
-      <p><b>BÊN B: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI</b></p>
-      <p>Địa chỉ <span style="position: absolute;left: 130px;">: Số 43,TT33 Khu đô thị văn phú, P. Phú La, Q. Hà đông, Hà Nội</span></p>
-      <p>Mã số thuế <span style="position: absolute;left: 130px;">: 0108188396</span></p>
-      <p>Số tài khoản <span style="position: absolute;left: 130px;">: 6899996868 tại ngân hàng TMCP Á châu chi nhánh Hà Nội</span></p>
-      <p>Đại diện bởi <span style="position: absolute;left: 130px;">: Ông Bùi Anh Duy Chức vụ: Giám Đốc</span></p>
-      <p><b>(Sau đây gọi tắt là Bên B)</b></p>
+  <div id="printdiv">
+    <div class="a4" style=" text-align: justify;padding-left: 30px;position: relative;">
+      <div style="text-align: center;">
+        <p><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></p>
+        <p><b>Độc lập – Tự do – Hạnh phúc.</b></p>
+        <p><b>--------o0o-------</b></p>
+        <p style="font-size: 18px;"><b>BIÊN BẢN THANH LÝ HỢP ĐỒNG </b></p>
+      </div>
+      <br>
 
+      <div>
+        <p style="text-indent: 35px;line-height: 1.5;">-Căn cứ vào hợp đồng cung cấp dịch vụ Số: {{data.soHd}}
+          đã ký ngày
+          {{data.ngayKy | date:'dd/MM/yyyy'}}
+          giữa {{data.benA}} và Công Ty TNHH Công Nghệ và Truyền Thông Hà Nội;</p>
+        <p [ngClass]="{'edit': ngayKetThuc.nam==0}" (click)="checkNKT = true" style=" text-indent: 35px;line-height: 1.5;font-size: 13pt;">-Căn cứ vào kết quả nghiệm thu khối lượng công việc hoàn thành,
+          chương trình kết
+          thúc
+          ngày {{!checkNKT?ngayKetThuc.ngay:''}} <input type="text" [(ngModel)]="ngayKetThuc.ngay" name="ngay1" style="width: 30px;" *ngIf="checkNKT"> tháng {{!checkNKT?ngayKetThuc.thang:''}}
+          <input type="text" [(ngModel)]="ngayKetThuc.thang" name="thang1" style="width: 30px;" *ngIf="checkNKT"> năm {{!checkNKT?ngayKetThuc.nam:''}}
+          <input type="text" [(ngModel)]="ngayKetThuc.nam" name="nam1" style="width: 50px;" *ngIf="checkNKT">.
+        </p><span><button mat-mini-fab (click)="checkNKT = false" style="position: absolute;left: 230px;top: 269px;" *ngIf="checkNKT">Ok</button></span>
+        <p>Hôm nay, Ngày 04 tháng 01 năm 2021 <span></span></p>
+      </div>
 
-      <!-- hai ben dong y .. -->
+      <!-- ben a -->
+      <div style="line-height: 1.5;">
+        <p><b>BÊN A: {{data.benA}}</b></p>
 
-      <div style="margin-left: 30px;">
-        <p style="line-height: 1.5;">- Hai Bên đồng ý ký biên bản thanh lý của hợp đồng số: 31122020/TOP-VGFX về việc
-          cung cấp dịch vụ hiệu ứng
-          sân
-          khấu bao
-          gồm lắp đặt, vận hành phục vụ chương trình “ECOPARK COUNT DOWN PARTY 2021” tại Công viên Hồ Thiên Nga, Khu đô
-          thị sinh
-          thái Ecopark, Văn Giang, Hưng Yên ngày 31/12/2020 theo yêu cầu cụ thể như sau:</p>
-        <p>Điều 1. Nội dung thanh lý:
-          Bên B đã hoàn thành việc cung cấp dịch vụ hiệu ứng sân khấu bao gồm lắp đặt, vận hành phục vụ chương trình
-          theo đúng nội dung hợp đồng, trong quá trình vận hành sử dụng không có sự cố, sai sót.
+        <p>Địa chỉ <span style="position: absolute;left: 130px;">: {{data.diaChi}}</span></p>
+        <p>VP giao dịch <span style="position: absolute;left: 130px;">: 331 Bến Vân Đồn, Phường 1, Quận 4, TPHCM</span>
         </p>
-        <br>
-      </div>
-      <!-- table -->
-      <div class="table" style="border-collapse: collapse;text-align: center;margin-left: 10px;">
-        <table border="1" style="width: 100%;border-collapse: collapse;">
-          <tr>
-            <th style="padding: 10px 5px;">STT</th>
-            <th style="padding: 10px 5px;">Hạng mục</th>
-            <th style="padding: 10px 5px;">ĐVT</th>
-            <th style="padding: 10px 5px;">Đơn giá</th>
-            <th style="padding: 10px 5px;">Số lượng</th>
-            <th style="padding: 10px 5px;">Thành Tiền</th>
-          </tr>
-          <tr>
-            <td style="text-align: center;">I</td>
-            <td colspan="5" style="text-align: left;padding: 10px 5px;"><b>DANH MỤC THIẾT BỊ</b></td>
-          </tr>
-          <!-- FOR -->
+        <p>Điện thoại <span style="position: absolute;left: 130px;">: {{data.dienThoai}}</span></p>
+        <p>Đại diện bởi <span style="position: absolute;left: 130px;">: {{data.gioiTinh?'Ông ':'Bà '}} {{data.daiDien}}
+            Chức vụ: {{ data.chucVu }}</span>
+        </p>
+        <p>MST <span style="position: absolute;left: 130px;">: {{data.mst}}</span></p>
+        <p><b>(Sau đây gọi tắt là Bên A)</b></p>
 
-          <!-- FOR -->
-          <tr>
-            <td style="text-align: center;">II</td>
-            <td colspan="4" style="padding: 10px 5px;"><b>TỔNG CHI PHÍ</b></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td style="padding: 10px 5px;"></td>
-            <td colspan="4" style="padding: 10px 5px;"><b>THUẾ VAT 10%</b></td>
-            <td style="padding: 10px 5px;"></td>
 
-          </tr>
-          <tr>
-            <td style="padding: 10px 5px;text-align: center;">III</td>
-            <td colspan="4" style="padding: 10px 5px;"><b>TỔNG CHI PHÍ (Đã bao gồm thuế VAT 10%)</b></td>
-            <td ></td>
+        <!-- ben b -->
 
-          </tr>
-        </table>
+        <p><b>BÊN B: CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG HÀ NỘI</b></p>
+        <p>Địa chỉ <span style="position: absolute;left: 130px;">: Số 43,TT33 Khu đô thị văn phú, P. Phú La, Q. Hà đông,
+            Hà Nội</span></p>
+        <p>Mã số thuế <span style="position: absolute;left: 130px;">: 0108188396</span></p>
+        <p>Số tài khoản <span style="position: absolute;left: 130px;">: 6899996868 tại ngân hàng TMCP Á châu chi nhánh
+            Hà
+            Nội</span></p>
+        <p>Đại diện bởi <span style="position: absolute;left: 130px;">: Ông Bùi Anh Duy Chức vụ: Giám Đốc</span></p>
+        <p><b>(Sau đây gọi tắt là Bên B)</b></p>
 
-      </div>
 
-      <div style="margin-left: 60px;">
+        <!-- hai ben dong y .. -->
+
+        <div style="margin-left: 30px;">
+          <p style="line-height: 1.5;">- Hai Bên đồng ý ký biên bản thanh lý của hợp đồng số: {{data.soHd}} về việc
+            cung cấp dịch vụ hiệu ứng sân khấu bao
+            gồm lắp đặt, vận hành phục vụ chương trình <b>“{{data.tenCt}}”</b> tại {{data.diaDienTrinhDien}} ngày
+            {{data.thoiGianThucHien | date:'dd/MM/yyyy'}} theo yêu cầu cụ thể như sau:</p>
+          <p>Điều 1. Nội dung thanh lý:
+            Bên B đã hoàn thành việc cung cấp dịch vụ hiệu ứng sân khấu bao gồm lắp đặt, vận hành phục vụ chương trình
+            theo đúng nội dung hợp đồng, trong quá trình vận hành sử dụng không có sự cố, sai sót.
+          </p>
+          <br>
+        </div>
+        <!-- table -->
+        <div class="table" style="border-collapse: collapse;text-align: center;margin-left: 7px;">
+          <table border="1" style="width: 100%;border-collapse: collapse;">
+            <tr>
+              <th style="padding: 7px 5px;">STT</th>
+              <th style="padding: 7px 5px;">Hạng mục</th>
+              <th style="padding: 7px 5px;">ĐVT</th>
+              <th style="padding: 7px 5px;">Đơn giá</th>
+              <th style="padding: 7px 5px;">Số lượng</th>
+              <th style="padding: 7px 5px;">Thành Tiền</th>
+            </tr>
+            <tr>
+              <td style="text-align: center;">I</td>
+              <td colspan="5" style="text-align: left;padding: 7px 5px;"><b>DANH MỤC THIẾT BỊ</b></td>
+            </tr>
+            <!-- FOR -->
+            <tr *ngFor="let item of data.chiTietLichSus;index as i" style="text-align: center;">
+              <td style="padding: 7px 5px;text-align: right;">{{ i+ 1 }}</td>
+              <td style="padding: 7px 5px;">{{item.hangMuc}}</td>
+              <td style="padding: 7px 5px;">{{item.dvt}}</td>
+              <td style="padding: 7px 5px;">{{item.donGia|tiente}}</td>
+              <td style="padding: 7px 5px;">{{item.soLuong}}</td>
+              <td style="padding: 7px 5px;text-align: right;">{{item.thanhTien|tiente}}</td>
+            </tr>
+            <!-- FOR -->
+            <tr>
+              <td style="text-align: center;">II</td>
+              <td colspan="4" style="padding: 7px 5px;text-align: left;"><b>TỔNG CHI PHÍ</b></td>
+              <td style="text-align: right;"><b>{{tongChiPhi|tiente}}</b></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 5px;"></td>
+              <td colspan="4" style="padding: 7px 5px;text-align: left;"><b>THUẾ VAT 10%</b></td>
+              <td style="padding: 7px 5px;text-align: right;"><b>{{ thueVAT|tiente }}</b> </td>
+
+            </tr>
+            <tr>
+              <td style="padding: 7px 5px;text-align: center;">III</td>
+              <td colspan="4" style="padding: 7px 5px;text-align: left;"><b>TỔNG CHI PHÍ (Đã bao gồm thuế VAT 10%)</b>
+              </td>
+              <td style="padding: 7px 5px;text-align: right;"><b>{{ tongAll|tiente }}</b> </td>
+
+            </tr>
+          </table>
+
+        </div>
+
+
         <p><b>Điều 2: Giá trị thanh lý & thanh toán:</b></p>
-        <p>+ Giá trị hợp đồng (Bao gồm VAT 10%)v `: 141.900.000VNĐ</p>
-        <p>+ Giá trị Phát sinh (Bao gồm VAT 10%): 0 VNĐ</p>
-        <p>+ Giá trị thanh lý (Bao gồm VAT 10%) : 141.900.000 VNĐ</p>
-        <p>+ Đã thanh toán : 70.950.000 VNĐ</p>
-        <p>+ Bên A còn phải thanh toán cho bên B : 70.950.000 VNĐ</p>
-        <p> (Bằng chữ: Bảy mươi triệu chín trăm năm mươi nghìn đồng chẵn./.)</p>
-        <p><span><b>+ Hình thức thanh toán:</b></span><span>Chuyển khoản.</span></p>
-        <p>Bên A có trách nhiệm thanh toán cho bên B số tiền là:70.950.000 VNĐ (Bằng chữ: Bảy mươi triệu chín trăm năm
-          mươi nghìn đồng chẵn.) theo đúng quy định của Hợp đồng.</p>
-      </div>
+        <div style="margin-left: 100px;line-height: 1;position: relative;">
+          <p>+ Giá trị hợp đồng (Bao gồm VAT 10%) <span style="position: absolute;left: 265px;">:</span><span
+              style="position: absolute;left: 300px;">{{ tongAll|tiente }} VNĐ</span></p>
+          <p>+ Giá trị Phát sinh (Bao gồm VAT 10%)<span style="position: absolute;left: 265px;">:</span><span
+              style="position: absolute;left: 300px;">0 VNĐ</span></p>
+          <p>+ Giá trị thanh lý (Bao gồm VAT 10%)<span style="position: absolute;left: 265px;">:</span><span
+              style="position: absolute;left: 300px;">{{ tongAll|tiente }} VNĐ</span></p>
+          <p>+ Đã thanh toán<span style="position: absolute;left: 265px;">:</span><span
+              style="position: absolute;left: 300px;">70.950.000 VNĐ</span></p>
+          <p>+ Bên A còn phải thanh toán cho bên B<span style="position: absolute;left: 265px;">:</span><span
+              style="position: absolute;left: 300px;">70.950.000 VNĐ</span></p>
+          <p> (Bằng chữ: {{ doctien }} đồng./.)</p>
+          <p><span><b>+ Hình thức thanh toán:</b></span><span>Chuyển khoản.</span></p>
+          <p>Bên A có trách nhiệm thanh toán cho bên B số tiền là:70.950.000 VNĐ (Bằng chữ: Bảy mươi triệu chín trăm năm
+            mươi nghìn đồng chẵn.) theo đúng quy định của Hợp đồng.</p>
+        </div>
 
-      <div>
-        <p><b>Điều 3: Điều khoản chung:</b></p>
-        <p style="text-indent: 35px">Biên bản Thanh lý này có hiệu lực kể từ ngày ký. Biên bản Thanh lý là một phần không tách rời của Hợp đồng
-        </p>
-        <p style="text-indent: 35px">Sau khi các Bên hoàn thành đầy đủ các nghĩa vụ theo quy định tại Hợp đồng và Biên bản thanh lý này. bao gồm
-          cả nghĩa vụ xuất hóa đơn của Bên B và nghĩa vụ thanh toán của Bên A thì Hợp đồng chấm dứt.</p>
-        <p style="text-indent: 35px">Biên bản thanh lý hợp đồng này được lập thành 04 (bốn) bản. Bên A giữ 02 (hai) bản, bên B giữ 02 (hai) bản,
-          có giá trị pháp lý như nhau.</p>
-      </div>
+        <div>
+          <p><b>Điều 3: Điều khoản chung:</b></p>
+          <p style="text-indent: 35px">Biên bản Thanh lý này có hiệu lực kể từ ngày ký. Biên bản Thanh lý là một phần
+            không tách rời của Hợp đồng
+          </p>
+          <p style="text-indent: 35px">Sau khi các Bên hoàn thành đầy đủ các nghĩa vụ theo quy định tại Hợp đồng và Biên
+            bản thanh lý này. bao gồm
+            cả nghĩa vụ xuất hóa đơn của Bên B và nghĩa vụ thanh toán của Bên A thì Hợp đồng chấm dứt.</p>
+          <p style="text-indent: 35px">Biên bản thanh lý hợp đồng này được lập thành 04 (bốn) bản. Bên A giữ 02 (hai)
+            bản,
+            bên B giữ 02 (hai) bản,
+            có giá trị pháp lý như nhau.</p>
+        </div>
 
 
-      <!-- ký -->
+        <!-- ký -->
 
-      <div>
-        <p><span> ĐẠI DIỆN BÊN A</span><span>ĐẠI DIỆN BÊN B</span></p>
-        <br>
-        <br>
-        <br>
+        <div>
+          <p><span> ĐẠI DIỆN BÊN A</span><span>ĐẠI DIỆN BÊN B</span></p>
+          <br>
+          <br>
+          <br>
 
-        <p><span> Trần Đình Vân Trình </span><span>Bùi Anh Duy</span></p>
+          <p><span> Trần Đình Vân Trình </span><span>Bùi Anh Duy</span></p>
 
+        </div>
       </div>
     </div>
+
   </div>
-
 </div>
-

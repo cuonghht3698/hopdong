@@ -1,8 +1,9 @@
 #printdiv{
   width: 21cm;
-  height: 27cm;
   margin: auto;
   font-family: "Times New Roman", Times, serif;
+
+  border: 1px black solid;
 }
 @media print {
   .a4 {
@@ -21,8 +22,12 @@
   padding-top: 1.25cm;
   padding-left: 2.06cm;
   padding-bottom: 0.75cm;
-  padding-right: 1.43cm;
-  width: 23cm;
-  height: 29.7cm;
+  padding-right: 2.06cm;
+  width: 21cm;
 
+
+}
+
+.edit{
+  color: red;
 }

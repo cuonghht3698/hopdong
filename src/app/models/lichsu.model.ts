@@ -18,6 +18,7 @@ export interface LichSuModel {
     soTK:string,
     ngayKy:Date,
     maKH:string,
+    tenCT:string
     ChiTiet: Array<ChiTietLichSu>;
 }
 
