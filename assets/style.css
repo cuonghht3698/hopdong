@@ -51,3 +51,6 @@
 .footer div strong{
   width: 100%;
 }
+p {
+  line-height: 2;
+}

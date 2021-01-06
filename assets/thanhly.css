@@ -1,0 +1,22 @@
+@media print {
+    .a4 {
+        page-break-after: always;
+        page-break-inside: auto;
+    }
+  }
+  
+  @page a4 {
+    size: 29.7cm 21cm;
+    mso-page-orientation: landscape;
+  }
+  .a4 {
+    /* margin: auto; */
+    text-align: justify;
+    padding-top: 1.25cm;
+    padding-left: 10.06cm;
+    padding-bottom: 0.75cm;
+    padding-right: 1.43cm;
+    width: 23cm;
+    height: 29.7cm;
+    background-color: red;
+  }
