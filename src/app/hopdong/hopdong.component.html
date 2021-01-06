@@ -18,6 +18,7 @@
 
 
 </div>
+
 <div id="printdiv" #myDiv>
   <div class="a4" style="margin: auto;">
     <div class="title" style="text-align: center;line-height: 1.5;">
@@ -27,14 +28,14 @@
         ---oOo--- <br>
       </span>
       <span style="font-size: 18pt;"> <b> HỢP ĐỒNG DỊCH VỤ</b> </span> <br>
-      <span style="font-size: 12pt;"> Số: 2706/20TTHN-NVT</span> <br><br>
+      <span style="font-size: 12pt;"> Số: {{ data.value.soHD }}</span> <br><br>
 
     </div>
 
     <div class="info" style="margin-left: 60px;line-height: 1.7;">
-      <span style="line-height: 1.5;"><i>Hôm nay, ngày {{ dateNow.getDate() }} tháng {{dateNow.getMonth() + 1}}
+      <span style="line-height: 1.5;"><i>Hôm nay, ngày {{ data.value.ngayKy.getDate() }} tháng {{data.value.ngayKy.getMonth() + 1}}
           năm
-          {{dateNow.getFullYear()}} chúng tôi gồm:</i></span>
+          {{data.value.ngayKy.getFullYear()}} chúng tôi gồm:</i></span>
       <br>
 
       <pre

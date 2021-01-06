@@ -43,6 +43,11 @@ export class HopdongComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dateNow = new Date();
     this.data = this.fb.group({
+      soHD:'',
+      ngayKy: new Date(),
+      soTK:'',
+      maKH:'',
+      soHopDong:'',
       benA: '',
       diaChiA: '',
       dienThoaiA: '',
@@ -66,7 +71,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     const dialog = this.dialog.open(HopDongPopup, {
       width: '95%',
       height: '90%',
-      data: { data: this.data.value, table: this.dataTable },
+      data: { data: this.data.value, table: this.dataTable},
       disableClose: true,
     });
 
@@ -75,6 +80,9 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       this.dataAll = res;
       this.dataTable = res.table;
       this.data = this.fb.group({
+        soHD: res.data.soHD,
+        ngayKy: res.data.ngayKy,
+        soTK: res.data.soTK,
         benA: res.data.benA,
         diaChiA: res.data.diaChiA,
         dienThoaiA: res.data.dienThoaiA,
@@ -87,7 +95,7 @@ export class HopdongComponent implements OnInit, AfterViewInit {
         timeLapDat: res.data.timeLapDat,
         tenCT: res.data.tenCT,
       });
-
+      this.dateNow = res.dateNow;
       // console.log(res);
       var s = 0;
 
@@ -199,6 +207,10 @@ export class HopdongComponent implements OnInit, AfterViewInit {
     ThoiGianThucHien: moment().format(),
     Tong: 0,
     Vat: 0,
+    soHD:'',
+    maKH:'',
+    ngayKy: new Date(),
+    soTK:'',
     ChiTiet: Array<ChiTietLichSu>()
   }
 
@@ -221,6 +233,10 @@ export class HopdongComponent implements OnInit, AfterViewInit {
       ThoiGianThucHien: moment(this.dataAll.data.timeThucHien).format(),
       Tong: this.tong,
       Vat: this.vat,
+      soHD: this.dataAll.data.soHD,
+      maKH :this.dataAll.data.maKH,
+      ngayKy:this.dataAll.data.ngayKy,
+      soTK: this.dataAll.data.soTK,
       ChiTiet: Array<ChiTietLichSu>()
     }
 

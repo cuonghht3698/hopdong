@@ -14,6 +14,10 @@ export interface LichSuModel {
     Vat: number,
     GiaTriHopDong: number,
     NgayTao: string,
+    soHD:string,
+    soTK:string,
+    ngayKy:Date,
+    maKH:string,
     ChiTiet: Array<ChiTietLichSu>;
 }
 

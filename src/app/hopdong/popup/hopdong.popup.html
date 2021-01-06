@@ -3,21 +3,31 @@
     <div class="col-3">
 
         <form class="text-center" autocomplete="off">
-            <mat-form-field appearance="fill" >
+            <mat-form-field appearance="fill">
                 <mat-label>Nhập số điện thoại</mat-label>
-                <mat-select >
-                    <mat-form-field appearance="outline" style="margin: auto;width:96%" >
+                <mat-select>
+                    <mat-form-field appearance="outline" style="margin: auto;width:96%">
                         <mat-label>Số điện thoại</mat-label>
-                        <input matInput [(ngModel)]="seacrh.dienThoai" name="search" autocomplete="off" >
+                        <input matInput [(ngModel)]="seacrh.dienThoai" name="search" autocomplete="off">
                     </mat-form-field>
                     <mat-option *ngFor="let state of dsKhachHang | filterBy: seacrh" [value]="state"
                         (click)="Select(state)">{{state.benA}}</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>Mã định danh</mat-label>
-              <input matInput [(ngModel)]="ob.data.maKh" name="makh">
-          </mat-form-field>
+                <mat-label>Số hợp đồng</mat-label>
+                <input matInput [(ngModel)]="ob.data.soHD" name="sohd">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Ngày ký hợp đồng</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="ob.data.ngayKy" name="time1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Mã định danh</mat-label>
+                <input matInput [(ngModel)]="ob.data.maKH" name="makh">
+            </mat-form-field>
             <mat-form-field appearance="fill">
                 <mat-label>Tên bên A</mat-label>
                 <input matInput [(ngModel)]="ob.data.benA" name="bena" required (change)="checkdoitac()">
@@ -25,7 +35,8 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Địa chỉ bên A</mat-label>
-                <textarea matInput [(ngModel)]="ob.data.diaChiA" name="diachi" required rows="3" (change)="checkdoitac()"></textarea>
+                <textarea matInput [(ngModel)]="ob.data.diaChiA" name="diachi" required rows="3"
+                    (change)="checkdoitac()"></textarea>
 
             </mat-form-field>
             <mat-form-field appearance="fill">
@@ -36,6 +47,11 @@
             <mat-form-field appearance="fill">
                 <mat-label>Mã số thuế</mat-label>
                 <input matInput [(ngModel)]="ob.data.mstA" name="mst" required (change)="checkdoitac()">
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Mã tài khoản</mat-label>
+                <input matInput [(ngModel)]="ob.data.soTK" name="mst">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
@@ -55,10 +71,10 @@
                 <input matInput [(ngModel)]="ob.data.chucVu" name="cv" required (change)="checkdoitac()">
             </mat-form-field>
             <mat-form-field appearance="fill">
-              <mat-label>Tên chương trình</mat-label>
-              <textarea matInput [(ngModel)]="ob.data.tenCT" name="ms1t1" required rows="3"></textarea>
-          </mat-form-field>
-            <button mat-raised-button color="primary" *ngIf="doitacmoi" (click)="DoiTacMoi()">Phát hiện đối tác mới?Thêm</button>
+                <mat-label>Tên chương trình</mat-label>
+                <textarea matInput [(ngModel)]="ob.data.tenCT" name="ms1t1" required rows="3"></textarea>
+            </mat-form-field>
+            <!-- <button mat-raised-button color="primary" *ngIf="doitacmoi" (click)="DoiTacMoi()">Phát hiện đối tác mới?Thêm</button> -->
             <mat-form-field appearance="fill">
                 <mat-label>Địa điểm thực hiện</mat-label>
                 <textarea matInput [(ngModel)]="ob.data.diaDiem" name="diadiem1" required rows="3"></textarea>
@@ -100,10 +116,9 @@
             </thead>
             <tbody>
                 <tr *ngFor="let item of ob.table; index as i">
-                    <td>{{i + 1}} <button mat-mini-fab color="warn"
-                        (click)="Xoa(item)"><span class="material-icons">
-                            clear
-                        </span></button></td>
+                    <td>{{i + 1}} <button mat-mini-fab color="warn" (click)="Xoa(item)"><span class="material-icons">
+                                clear
+                            </span></button></td>
 
                     <td>{{item.HangMuc}}</td>
                     <td>{{item.Dvt}}</td>
@@ -120,11 +135,13 @@
                     </td>
                     <td><input type="text" class="form-control" [(ngModel)]="addData.Dvt" placeholder="Đơn vị tính">
                     </td>
-                    <td style="position: relative;" class="dongia"><input type="number" class="form-control" [(ngModel)]="addData.DonGia" placeholder="Đơn giá" (keyup)="Auto()">
-                        <span *ngIf="showTienChu" style="position: absolute;left: -20px;top: 65px;" class="tienchu">{{ showTienChu + ' đồng' }}</span>
+                    <td style="position: relative;" class="dongia"><input type="number" class="form-control"
+                            [(ngModel)]="addData.DonGia" placeholder="Đơn giá" (keyup)="Auto()">
+                        <span *ngIf="showTienChu" style="position: absolute;left: -20px;top: 65px;" class="tienchu">{{
+                            showTienChu + ' đồng' }}</span>
                     </td>
-                    <td><input type="number" min="0" class="form-control" [(ngModel)]="addData.SoLuong" placeholder="Số lượng"
-                            (change)="Auto()"></td>
+                    <td><input type="number" min="0" class="form-control" [(ngModel)]="addData.SoLuong"
+                            placeholder="Số lượng" (change)="Auto()"></td>
                     <td><input type="number" disabled class="form-control" [(ngModel)]="addData.ThanhTien"
                             placeholder="Thành tiền"> </td>
 
@@ -133,7 +150,8 @@
 
         </table>
         <div class="row" style="float: right;">
-            <div class="col-2 mt-3 float-right"> <button mat-stroked-button color="primary" (click)="Them()">Thêm hạng mục</button>
+            <div class="col-2 mt-3 float-right"> <button mat-stroked-button color="primary" (click)="Them()">Thêm hạng
+                    mục</button>
             </div>
         </div>
 
@@ -148,21 +166,24 @@
         margin: 2px;
         font-size: 10pt;
     }
+
     button {
-    outline: none;
-}
+        outline: none;
+    }
+
     .xacnhan {
         margin: auto;
         position: absolute;
         bottom: 5%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
 
-    .dongia input:focus ~  .tienchu{
+    .dongia input:focus~.tienchu {
         display: block;
     }
-    .tienchu{
+
+    .tienchu {
         display: none;
     }
 </style>

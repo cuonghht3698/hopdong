@@ -53,6 +53,10 @@ export class LichSuComponent implements OnInit {
     ThoiGianThucHien: '',
     Tong: 0,
     Vat: 0,
+    maKH:'',
+    ngayKy:new Date(),
+    soHD:'',
+    soTK:'',
     ChiTiet: Array<ChiTietLichSu>(),
   };
 }

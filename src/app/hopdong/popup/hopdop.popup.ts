@@ -113,6 +113,7 @@ export class HopDongPopup implements OnInit {
         // console.log(item);
             this.ob.data.maKh = item.maKh,
 
+
             this.ob.data.benA = item.benA,
 
             this.ob.data.diaChiA = item.diaChi,
